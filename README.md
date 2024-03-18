@@ -1,2 +1,2 @@
-# ECE-396
+# ECE-496
 Senior Thesis
