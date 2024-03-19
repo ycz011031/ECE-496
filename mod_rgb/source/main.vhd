@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: UIUC
+-- Engineer: Yicheng Zhou
 -- 
 -- Create Date: 2024/03/19 15:18:25
--- Design Name: 
--- Module Name: main - 
--- Project Name: 
+-- Design Name: mod_rgb
+-- Module Name: main 
+-- Project Name: ECE 496
 -- Target Devices: 
 -- Tool Versions: 
 -- Description: 
@@ -20,8 +20,8 @@
 
 
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -49,6 +49,14 @@ entity main is
 end main;
 
 architecture behavioral of main is
+    type int_array is array(255 downto 0) of integer;
+    type int_arr   is array(64 downto 0)  of integer;
+    signal Rdata_rs : int_array;
+    signal Bdata_rs : int_array;
+    signal Gdata_rs : int_array;
+    signal Ydata_rs : int_array;
+    signal Udata_rs : int_arr;
+    signal Vdata_rs : int_arr;
 
 begin
     main : process (clk_i,rst_in)
