@@ -49,8 +49,8 @@ entity main is
 end main;
 
 architecture behavioral of main is
-    type int_array is array(255 downto 0) of integer;
-    type int_arr   is array(64 downto 0)  of integer;
+    type int_array is array(255 downto 0) of unsigned(7 downto 0);
+    type int_arr   is array(63 downto 0)  of unsigned(7 downto 0);
     signal Rdata_rs : int_array;
     signal Bdata_rs : int_array;
     signal Gdata_rs : int_array;
@@ -67,8 +67,48 @@ begin
             Vdata_o <= (others => '0');
         else
             if (rising_edge(clk_i)) then
-                for itr in 255 downto 0 loop
+                --loading input into register
+                for itr in 0 to 255 loop
+                    Rdata_rs(itr) <= unsigned(Rdata_i((itr + 1) * Data_size_g - 1 downto itr * Data_size_g));
+                    Gdata_rs(itr) <= unsigned(Gdata_i((itr + 1) * Data_size_g - 1 downto itr * Data_size_g));
+                    Bdata_rs(itr) <= unsigned(Bdata_i((itr + 1) * Data_size_g - 1 downto itr * Data_size_g));
                 end loop;
+                
+                --calculate Y data
+                for itr in 0 to 255 loop
+                    --Ydata_rs(itr) <= unsigned((66)*Rdata_rs(itr)/255 + (129)*Gdata_rs(itr)/255 + (25)*Bdata_rs(itr)/255 +16);
+                    Ydata_rs(itr) <= to_unsigned(
+                    (66 * to_integer(Rdata_rs(itr)) / 255) +
+                    (129 * to_integer(Gdata_rs(itr)) / 255) +
+                    (25 * to_integer(Bdata_rs(itr)) / 255) + 16,
+                    Ydata_rs(itr)'length);
+                    Ydata_o((itr+1)*data_size_g-1 downto itr * data_size_g) <= std_logic_vector(Ydata_rs(itr));
+                    --Ydata_o((itr+1)*data_size_g-1 downto itr * data_size_g) <= unsigned((66)*Rdata_rs(itr)/255 + (129)*Gdata_rs(itr)/255 + (25)*Bdata_rs(itr)/255 +16);
+                end loop;
+                
+                --calculate U & V data
+                for itr in 0 to 63 loop
+                    Udata_rs(itr) <= to_unsigned(
+                        ((112 * (to_integer(Bdata_rs(4*itr)) + to_integer(Bdata_rs(4*itr+1)) +
+                                to_integer(Bdata_rs(4*itr+2)) + to_integer(Bdata_rs(4*itr+3))) / 4) / 255) -
+                        ((38 * (to_integer(Rdata_rs(4*itr)) + to_integer(Rdata_rs(4*itr+1)) +
+                                to_integer(Rdata_rs(4*itr+2)) + to_integer(Rdata_rs(4*itr+3))) / 4) / 255) -
+                        ((74 * (to_integer(Gdata_rs(4*itr)) + to_integer(Gdata_rs(4*itr+1)) +
+                                to_integer(Gdata_rs(4*itr+2)) + to_integer(Gdata_rs(4*itr+3))) / 4) / 255) + 128,
+                        Udata_rs(itr)'length);                    
+                    Vdata_rs(itr) <= to_unsigned(
+                        ((112 * (to_integer(Rdata_rs(4*itr)) + to_integer(Rdata_rs(4*itr+1)) +
+                                to_integer(Rdata_rs(4*itr+2)) + to_integer(Rdata_rs(4*itr+3))) / 4) / 255) -
+                        ((18 * (to_integer(Bdata_rs(4*itr)) + to_integer(Bdata_rs(4*itr+1)) +
+                                to_integer(Bdata_rs(4*itr+2)) + to_integer(Bdata_rs(4*itr+3))) / 4) / 255) -
+                        ((94 * (to_integer(Gdata_rs(4*itr)) + to_integer(Gdata_rs(4*itr+1)) +
+                                to_integer(Gdata_rs(4*itr+2)) + to_integer(Gdata_rs(4*itr+3))) / 4) / 255) + 128,
+                        Vdata_rs(itr)'length);
+                    
+                    Udata_o((itr+1)*data_size_g-1 downto itr * data_size_g) <= std_logic_vector(Udata_rs(itr));
+                    Vdata_o((itr+1)*data_size_g-1 downto itr * data_size_g) <= std_logic_vector(Vdata_rs(itr));
+                end loop;
+                
             end if;
         end if;
 end process;
