@@ -1,0 +1,606 @@
+
+*** Running vivado
+    with args -log intra16x16_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source intra16x16_top.tcl
+
+
+
+****** Vivado v2022.2 (64-bit)
+  **** SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source intra16x16_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1002.820 ; gain = 118.703
+Command: read_checkpoint -auto_incremental -incremental {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/utils_1/imports/synth_1/intra16x16_dc_prediction.dcp}
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/utils_1/imports/synth_1/intra16x16_dc_prediction.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top intra16x16_top -part xc7a200tlfbg676-2L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200tl'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200tl'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 101052
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1442.402 ; gain = 407.160
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'intra16x16_top' [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'DC_prediction' [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'DC_prediction' (0#1) [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Horizontal_prediction' [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Horizontal_prediction.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Horizontal_prediction' (0#1) [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Horizontal_prediction.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Vertical_prediction' [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Vertical_prediction.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Vertical_prediction' (0#1) [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Vertical_prediction.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Plane_prediction' [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Planer_prediction.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Planer_prediction.v:55]
+INFO: [Synth 8-6155] done synthesizing module 'Plane_prediction' (0#1) [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Planer_prediction.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Top.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'intra16x16_top' (0#1) [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/Top.v:1]
+WARNING: [Synth 8-6014] Unused sequential element j_reg was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:48]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][15] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][14] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][13] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][12] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][11] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][10] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][9] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][8] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][7] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][6] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][5] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][4] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][3] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][2] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][1] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[15][0] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][15] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][14] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][13] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][12] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][11] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][10] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][9] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][8] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][7] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][6] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][5] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][4] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][3] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][2] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][1] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[14][0] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][15] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][14] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][13] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][12] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][11] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][10] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][9] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][8] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][7] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][6] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][5] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][4] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][3] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][2] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][1] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[13][0] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][15] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][14] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][13] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][12] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][11] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][10] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][9] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][8] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][7] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][6] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][5] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][4] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][3] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][2] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][1] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[12][0] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][15] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][14] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][13] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][12] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][11] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][10] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][9] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][8] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][7] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][6] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][5] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][4] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][3] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][2] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][1] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[11][0] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][15] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][14] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][13] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][12] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][11] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][10] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][9] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][8] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][7] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][6] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][5] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][4] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][3] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][2] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][1] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[10][0] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[9][15] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[9][14] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+WARNING: [Synth 8-6014] Unused sequential element prediction_reg[9][13] was removed.  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:88]
+INFO: [Common 17-14] Message 'Synth 8-6014' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7137] Register residual_reg[15][15] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][14] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][13] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][12] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][11] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][10] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][9] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][8] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][7] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][6] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][5] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][4] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][3] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][2] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][1] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[15][0] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][15] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][14] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][13] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][12] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][11] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][10] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][9] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][8] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][7] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][6] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][5] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][4] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][3] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][2] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][1] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[14][0] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][15] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][14] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][13] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][12] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][11] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][10] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][9] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][8] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][7] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][6] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][5] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][4] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][3] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][2] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][1] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[13][0] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][15] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][14] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][13] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][12] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][11] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][10] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][9] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][8] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][7] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][6] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][5] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][4] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][3] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][2] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][1] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[12][0] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][15] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][14] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][13] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][12] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][11] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][10] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][9] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][8] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][7] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][6] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][5] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][4] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][3] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][2] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][1] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[11][0] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][15] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][14] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][13] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][12] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][11] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][10] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][9] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][8] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][7] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][6] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][5] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][4] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][3] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][2] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][1] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[10][0] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[9][15] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[9][14] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[9][13] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+WARNING: [Synth 8-7137] Register residual_reg[9][12] in module DC_prediction has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/DC_prediction.v:89]
+INFO: [Common 17-14] Message 'Synth 8-7137' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1816.844 ; gain = 781.602
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1816.844 ; gain = 781.602
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tlfbg676-2L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1816.844 ; gain = 781.602
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a200tlfbg676-2L
+---------------------------------------------------------------------------------
+Start Preparing Guide Design
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6895] The reference checkpoint C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/utils_1/imports/synth_1/intra16x16_dc_prediction.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 781.602
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 1816.844 ; gain = 781.602
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'DC_prediction'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Horizontal_prediction'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Vertical_prediction'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Plane_prediction'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                             0001 |                               00
+                CALC_SUM |                             0010 |                               01
+               CALC_MEAN |                             0100 |                               10
+           CALC_RESIDUAL |                             1000 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'DC_prediction'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              001 |                               00
+                 PREDICT |                              010 |                               01
+           CALC_RESIDUAL |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Horizontal_prediction'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              001 |                               00
+                 PREDICT |                              010 |                               01
+           CALC_RESIDUAL |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Vertical_prediction'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                               00 |                               00
+                CALC_H_V |                               01 |                               01
+               CALC_PRED |                               10 |                               10
+           CALC_RESIDUAL |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'Plane_prediction'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:33 ; elapsed = 00:00:31 . Memory (MB): peak = 1816.844 ; gain = 781.602
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: no
+
+   Reason for not running incremental synthesis : 
+
+
+INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 13    
+	   3 Input   32 Bit       Adders := 10    
+	   3 Input    8 Bit       Adders := 64    
+	   2 Input    6 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
++---Registers : 
+	             2048 Bit    Registers := 4     
+	               32 Bit    Registers := 6     
+	               16 Bit    Registers := 3     
+	                8 Bit    Registers := 1553  
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Multipliers : 
+	               6x32  Multipliers := 2     
+	               4x32  Multipliers := 2     
+	              16x32  Multipliers := 8     
++---Muxes : 
+	   4 Input 2048 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 7     
+	   3 Input   32 Bit        Muxes := 2     
+	   4 Input   32 Bit        Muxes := 4     
+	   2 Input    8 Bit        Muxes := 3     
+	   2 Input    7 Bit        Muxes := 3     
+	   2 Input    5 Bit        Muxes := 4     
+	   4 Input    5 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 37    
+	   3 Input    1 Bit        Muxes := 74    
+	   4 Input    1 Bit        Muxes := 60    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP V1, operation Mode is: A*B.
+DSP Report: operator V1 is absorbed into DSP V1.
+DSP Report: operator V1 is absorbed into DSP V1.
+DSP Report: Generating DSP V1, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator V1 is absorbed into DSP V1.
+DSP Report: operator V1 is absorbed into DSP V1.
+DSP Report: Generating DSP p_1_out, operation Mode is: A*B.
+DSP Report: operator p_1_out is absorbed into DSP p_1_out.
+DSP Report: operator p_1_out is absorbed into DSP p_1_out.
+DSP Report: Generating DSP p_1_out, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator p_1_out is absorbed into DSP p_1_out.
+DSP Report: operator p_1_out is absorbed into DSP p_1_out.
+DSP Report: Generating DSP H1, operation Mode is: A*B.
+DSP Report: operator H1 is absorbed into DSP H1.
+DSP Report: operator H1 is absorbed into DSP H1.
+DSP Report: Generating DSP H1, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator H1 is absorbed into DSP H1.
+DSP Report: operator H1 is absorbed into DSP H1.
+DSP Report: Generating DSP p_0_out, operation Mode is: (A:0x1ff9)*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP p_2_out, operation Mode is: PCIN+(A:0x0):B+(C:0x10).
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+DSP Report: Generating DSP p_0_out, operation Mode is: (A:0x1ffa)*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP p_2_out, operation Mode is: PCIN+(A:0x0):B+(C:0x10).
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+DSP Report: Generating DSP p_0_out, operation Mode is: (A:0x1ffb)*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP p_2_out, operation Mode is: PCIN+(A:0x0):B+(C:0x10).
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+DSP Report: Generating DSP p_0_out, operation Mode is: (A:0x1ffc)*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP p_2_out, operation Mode is: PCIN+(A:0x0):B+(C:0x10).
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+DSP Report: Generating DSP p_0_out, operation Mode is: (A:0x1ffd)*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP p_2_out, operation Mode is: PCIN+(A:0x0):B+(C:0x10).
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+DSP Report: Generating DSP p_0_out, operation Mode is: (A:0x1ffe)*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP p_2_out, operation Mode is: PCIN+(A:0x0):B+(C:0x10).
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+DSP Report: Generating DSP p_0_out, operation Mode is: (A:0x1fff)*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP p_2_out, operation Mode is: PCIN+(A:0x0):B+(C:0x10).
+DSP Report: operator p_2_out is absorbed into DSP p_2_out.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:28 ; elapsed = 00:01:33 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++-----------------+-------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping             | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+-------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Plane_prediction | A*B                     | 18     | 7      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | (PCIN>>17)+A*B          | 16     | 7      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B                     | 18     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | (PCIN>>17)+A*B          | 17     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B                     | 18     | 7      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | (PCIN>>17)+A*B          | 16     | 7      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | (A:0x1ff9)*B            | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+(A:0x0):B+(C:0x10) | 30     | 13     | 5      | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|Plane_prediction | (A:0x1ffa)*B            | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+(A:0x0):B+(C:0x10) | 30     | 13     | 5      | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|Plane_prediction | (A:0x1ffb)*B            | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+(A:0x0):B+(C:0x10) | 30     | 13     | 5      | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|Plane_prediction | (A:0x1ffc)*B            | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+(A:0x0):B+(C:0x10) | 30     | 13     | 5      | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|Plane_prediction | (A:0x1ffd)*B            | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+(A:0x0):B+(C:0x10) | 30     | 13     | 5      | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|Plane_prediction | (A:0x1ffe)*B            | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+(A:0x0):B+(C:0x10) | 30     | 13     | 5      | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|Plane_prediction | (A:0x1fff)*B            | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+(A:0x0):B+(C:0x10) | 30     | 13     | 5      | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
++-----------------+-------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:28 ; elapsed = 00:01:34 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:34 ; elapsed = 00:01:40 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:43 ; elapsed = 00:01:49 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:43 ; elapsed = 00:01:49 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:44 ; elapsed = 00:01:50 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:44 ; elapsed = 00:01:50 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:45 ; elapsed = 00:01:51 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:45 ; elapsed = 00:01:51 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++-----------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Plane_prediction | A*B          | 17     | 6      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN>>17+A*B | 15     | 6      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 17     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 17     | 6      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN>>17+A*B | 15     | 6      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 13     | 13     | -      | -      | 0      | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+A:B+C   | 0      | 13     | -      | -      | 13     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 13     | 13     | -      | -      | 0      | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+A:B+C   | 0      | 13     | -      | -      | 13     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 13     | 13     | -      | -      | 0      | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+A:B+C   | 0      | 13     | -      | -      | 13     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 13     | 13     | -      | -      | 0      | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+A:B+C   | 0      | 13     | -      | -      | 13     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 13     | 13     | -      | -      | 0      | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+A:B+C   | 0      | 13     | -      | -      | 13     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 13     | 13     | -      | -      | 0      | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+A:B+C   | 0      | 13     | -      | -      | 13     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | A*B          | 13     | 13     | -      | -      | 0      | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|Plane_prediction | PCIN+A:B+C   | 0      | 13     | -      | -      | 13     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++-----------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |   267|
+|3     |DSP48E1 |    19|
+|4     |LUT1    |    17|
+|5     |LUT2    |   602|
+|6     |LUT3    |    20|
+|7     |LUT4    |   242|
+|8     |LUT5    |    98|
+|9     |LUT6    |  6295|
+|10    |MUXF7   |   397|
+|11    |MUXF8   |    16|
+|12    |FDCE    |  8484|
+|13    |FDPE    |     3|
+|14    |FDRE    | 12416|
+|15    |IBUF    |  2310|
+|16    |OBUF    |  2048|
++------+--------+------+
+
+Report Instance Areas: 
++------+------------------------+----------------------+------+
+|      |Instance                |Module                |Cells |
++------+------------------------+----------------------+------+
+|1     |top                     |                      | 33235|
+|2     |  dc_prediction         |DC_prediction         |  5290|
+|3     |  horizontal_prediction |Horizontal_prediction |  5309|
+|4     |  plane_prediction      |Plane_prediction      | 10488|
+|5     |  vertical_prediction   |Vertical_prediction   |  7789|
++------+------------------------+----------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:45 ; elapsed = 00:01:51 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 1 critical warnings and 2053 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:45 ; elapsed = 00:01:51 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+Synthesis Optimization Complete : Time (s): cpu = 00:01:45 ; elapsed = 00:01:51 . Memory (MB): peak = 2124.945 ; gain = 1089.703
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.590 . Memory (MB): peak = 2124.945 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 699 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2124.945 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: b3be7154
+INFO: [Common 17-83] Releasing license: Synthesis
+39 Infos, 201 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:55 ; elapsed = 00:02:02 . Memory (MB): peak = 2124.945 ; gain = 1097.266
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.runs/synth_1/intra16x16_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file intra16x16_top_utilization_synth.rpt -pb intra16x16_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Aug  5 22:54:02 2024...
