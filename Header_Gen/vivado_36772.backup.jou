@@ -1,0 +1,51 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Tue Oct  1 22:14:19 2024
+# Process ID: 36772
+# Current directory: C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent41212 C:\Users\Yicheng Zhou\OneDrive\Desktop\UIUC\ECE 496\FPGA_build\Header_Gen\Header_Gen.xpr
+# Log file: C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/vivado.log
+# Journal file: C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen\vivado.jou
+# Running On: DESKTOP-AENBBM7, OS: Windows, CPU Frequency: 2208 MHz, CPU Physical cores: 6, Host memory: 17071 MB
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.xpr}
+update_compile_order -fileset sources_1
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new
+file mkdir {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new}
+close [ open {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new/TB.vhd} w ]
+add_files -fileset sim_1 {{C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new/TB.vhd}}
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new/TB_T.vhd} w ]
+add_files -fileset sim_1 {{C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new/TB_T.vhd}}
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source test_header.tcl
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new/TB_H.vhd} w ]
+add_files -fileset sim_1 {{C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/Header_Gen/Header_Gen.srcs/sim_1/new/TB_H.vhd}}
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+close_sim
+launch_simulation
+source test_header.tcl
+set_property -name {xsim.simulate.runtime} -value {100000ns} -objects [get_filesets sim_1]
+set_property dataflow_viewer_settings "min_width=16"   [current_fileset]
+close_sim
+launch_simulation
+source test_header.tcl
+close_sim

@@ -1180,7 +1180,7 @@ always @(posedge CLK2) begin
 end
 
 always @(posedge CLK) begin
-
+    XSTATE <= state;
 
     if (state == STATE_IDLE) begin
         VALID <= 1'b0;

@@ -1,0 +1,505 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Wed Sep  4 08:06:33 2024
+# Process ID: 23800
+# Current directory: C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26340 C:\Users\Yicheng Zhou\OneDrive\Desktop\UIUC\ECE 496\FPGA_build\CAVLC\CAVLC.xpr
+# Log file: C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/vivado.log
+# Journal file: C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC\vivado.jou
+# Running On: DESKTOP-AENBBM7, OS: Windows, CPU Frequency: 2208 MHz, CPU Physical cores: 6, Host memory: 17071 MB
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.xpr}
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120_revb/es/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/es/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+open_project: Time (s): cpu = 00:00:24 ; elapsed = 00:00:11 . Memory (MB): peak = 1755.793 ; gain = 350.676
+update_compile_order -fileset sources_1
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new
+file mkdir {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new}
+close [ open {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new/tb.vhd} w ]
+add_files -fileset sim_1 {{C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new/tb.vhd}}
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'test' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj test_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sources_1/new/CAVLC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module h264cavlc
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+"xvhdl --incr --relax -prj test_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
+ERROR: [VRFC 10-2987] 'h264' is not compiled in library 'xil_defaultlib' [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new/tb.vhd:28]
+INFO: [VRFC 10-3107] analyzing entity 'test'
+ERROR: [VRFC 10-9458] unit 'test' is ignored due to previous errors [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new/tb.vhd:30]
+INFO: [VRFC 10-8704] VHDL file 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new/tb.vhd' is ignored due to errors
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim/xvhdl.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim/xvhdl.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 1779.914 ; gain = 0.000
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120_revb/es/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/es/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120_revb/es/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/es/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120_revb/es/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/es/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+create_project project_1 {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1} -part xc7vx485tffg1157-1
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120_revb/es/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180_es:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/es/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new
+file mkdir {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new}
+close [ open {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/cavlc.vhd} w ]
+add_files {{C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/cavlc.vhd}}
+update_compile_order -fileset sources_1
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+file mkdir C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new
+file mkdir {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new}
+close [ open {C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd} w ]
+add_files -fileset sim_1 {{C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd}}
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'test' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj test_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/cavlc.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'h264cavlc'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'test'
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:194]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:196]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:200]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:203]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:207]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:211]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:214]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:218]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:220]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:222]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:226]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:228]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:230]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:232]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:234]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:236]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:238]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:243]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:245]
+INFO: [#UNDEF] Sorry, too many errors..
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim/xvhdl.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim/xvhdl.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+set_property file_type {VHDL 2008} [get_files  {{C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/cavlc.vhd}}]
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'test' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj test_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/cavlc.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'h264cavlc'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'test'
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:194]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:196]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:200]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:203]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:207]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:211]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:214]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:218]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:220]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:222]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:226]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:228]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:230]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:232]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:234]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:236]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:238]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:243]
+ERROR: [VRFC 10-8605] 'write' has 2 possible matching identifiers [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:245]
+INFO: [#UNDEF] Sorry, too many errors..
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim/xvhdl.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim/xvhdl.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'test' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj test_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sources_1/new/cavlc.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'h264cavlc'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'test'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot test_behav xil_defaultlib.test -log elaborate.log"
+Vivado Simulator v2022.2
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot test_behav xil_defaultlib.test -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-8944] expression has 28 elements; formal 've' expects 25 [C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd:90]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit test in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'test' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj test_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'test'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot test_behav xil_defaultlib.test -log elaborate.log"
+Vivado Simulator v2022.2
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot test_behav xil_defaultlib.test -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture hw of entity xil_defaultlib.h264cavlc [h264cavlc_default]
+Compiling architecture cavlc_test of entity xil_defaultlib.test
+Built simulation snapshot test_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '5' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "test_behav -key {Behavioral:sim_1:Functional:test} -tclbatch {test.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source test.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'test_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1877.996 ; gain = 0.000
+current_project CAVLC
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'test' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj test_vlog.prj"
+"xvhdl --incr --relax -prj test_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'test'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test_behav xil_defaultlib.test xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2022.2
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test_behav xil_defaultlib.test xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling package vl.vl_types
+Compiling module xil_defaultlib.glbl
+Compiling module xil_defaultlib.h264cavlc
+Compiling architecture cavlc_test of entity xil_defaultlib.test
+Built simulation snapshot test_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "test_behav -key {Behavioral:sim_1:Functional:test} -tclbatch {test.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source test.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'test_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1882.359 ; gain = 0.000
+current_project project_1
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'test' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj test_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot test_behav xil_defaultlib.test -log elaborate.log"
+Vivado Simulator v2022.2
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot test_behav xil_defaultlib.test -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/project_1/project_1.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "test_behav -key {Behavioral:sim_1:Functional:test} -tclbatch {test.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source test.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'test_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1882.359 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_project
+launch_simulation -mode post-synthesis -type functional
+Command: launch_simulation  -mode post-synthesis -type functional
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching post-synthesis functional simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/synth/func/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7a200tfbv676-2L
+INFO: [Device 21-403] Loading part xc7a200tfbv676-2L
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2233.445 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 34 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2022.2
+open_run: Time (s): cpu = 00:00:11 ; elapsed = 00:00:29 . Memory (MB): peak = 2237.504 ; gain = 355.145
+INFO: [Common 17-344] 'open_run' was cancelled
+INFO: [Vivado 12-5357] 'setup' step aborted
+launch_simulation: Time (s): cpu = 00:00:12 ; elapsed = 00:00:30 . Memory (MB): peak = 2237.504 ; gain = 355.145
+INFO: [Common 17-344] 'launch_simulation' was cancelled
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'test'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+WARNING: [Vivado 12-13277] Compiled library path does not exist: ''
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2022.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'test' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj test_vlog.prj"
+"xvhdl --incr --relax -prj test_vhdl.prj"
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 2237.504 ; gain = 0.000
+INFO: [USF-XSim-69] 'compile' step finished in '7' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test_behav xil_defaultlib.test xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2022.2
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test_behav xil_defaultlib.test xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "test_behav -key {Behavioral:sim_1:Functional:test} -tclbatch {test.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source test.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'test_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:14 . Memory (MB): peak = 2258.793 ; gain = 21.289
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Sep  4 10:36:51 2024...
