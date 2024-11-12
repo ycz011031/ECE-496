@@ -28,9 +28,77 @@ module Intra_Top (
         horizontal_index <= 7'd0;
         vertical_index   <= 7'd0;
     end       
+   
+    reg [2:0] cur_state_inq;
+    reg [1:0] cur_sub_block;
+    reg data_strobe;
+    reg data_ready_reg;
     
-    
-    
+    always @(posedge clk) begin
+        case(cur_state_inq)
+          3'b000 : begin
+            data_strobe <= 1'b0;
+            data_ready_reg <= data_ready;
+            if (data_ready_reg == 1'b0 && data_ready == 1'b1) begin
+                cur_state_inq <= 3'b001;
+                horizontal_index <= 7'd0;
+                vertical_index <= 7'd0;
+                cur_sub_block <= 2'd0;
+            end
+          end
+          3'b001 : begin
+            data_strobe <= 1'b0;
+            inq_addr <= {horizontal_index,cur_sub_block[0]} + {vertical_index,cur_sub_block[1]}*424;                  
+            inq_update <= 1'b1;
+            cur_state_inq <= 3'b010;
+            cur_sub_block <= cur_sub_block + 1;
+          end
+          3'b010 : begin
+            inq_update <= 1'b0;
+            case (cur_sub_block)
+                2'd0 : begin
+                    row_1[15:0] <= MB_flat[15:0];
+                    row_2[15:0] <= MB_flat[31:16];
+                    cur_state_inq <= 3'b001;
+                end
+                2'd1 : begin
+                    row_1[31:16] <= MB_flat[15:0];
+                    row_2[31:16] <= MB_flat[31:16];
+                    cur_state_inq <= 3'b001;
+                end          
+                2'd2 : begin
+                    row_3[15:0] <= MB_flat[15:0];
+                    row_4[15:0] <= MB_flat[31:16];
+                    cur_state_inq <= 3'b001;
+                end
+                2'd3 : begin
+                    row_3[31:16] <= MB_flat[15:0];
+                    row_4[31:16] <= MB_flat[31:16];
+                    cur_state_inq <= 3'b100;
+                end
+            endcase              
+          end
+          3'b100 : begin
+             data_strobe <= 1'b1;
+             row_cache[horizontal_index] <= row_4;
+             col_cache<={row_4[31:24],row_3[31:24],row_2[31:24],row_1[31:24]};
+             if (horizontal_index == 10'd424) begin
+                 horizontal_index <= 8'd0;
+                 if (vertical_index == 8'd240) begin
+                     vertical_index <= 10'd0;
+                     cur_state_inq <= 3'b000;
+                 end else begin
+                     vertical_index <= vertical_index + 1;
+                     cur_state_inq <= 3'b001;
+                 end
+             end else begin
+                 horizontal_index <= horizontal_index + 1;
+                 cur_state_inq <= 3'b001;
+             end
+          end                    
+        endcase            
+    end            
+            
     
     
     // Instantiate DC mode prediction module
