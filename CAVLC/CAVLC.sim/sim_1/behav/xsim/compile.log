@@ -1,4 +1,0 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/hardh264/src/h264cavlc.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'h264cavlc_vhd'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Yicheng Zhou/OneDrive/Desktop/UIUC/ECE 496/FPGA_build/CAVLC/CAVLC.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'test'

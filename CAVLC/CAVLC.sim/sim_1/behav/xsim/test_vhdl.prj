@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../../../../../hardh264/src/h264cavlc.vhd" \
-"../../../../CAVLC.srcs/sim_1/new/tb.vhd" \
-
-# Do not sort compile order
-nosort
