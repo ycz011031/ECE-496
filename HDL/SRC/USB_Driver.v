@@ -49,7 +49,7 @@ module USB_Driver(
         .okEH(okEH)
     );
     
-    localparam  endPt_count = 2;
+    localparam  endPt_count = 3;
     wire [endPt_count*65-1:0] okEHx;  
     okWireOR # (.N(endPt_count)) wireOR (okEH, okEHx);  
     
@@ -95,7 +95,7 @@ module USB_Driver(
     
     okBTPipeIn Pipe_80 (
         .okHE(okHE), 
-        .okEH(okEH),
+        .okEH(okEHx[ 2*65 +: 65 ]),
         .ep_addr(8'h80), 
         .ep_dataout(PC_rx_sync), 
         .ep_write(PC_rx_sync_wr),
@@ -122,7 +122,7 @@ module USB_Driver(
         .din(PC_rx_sync),
         .wr_en(PC_rx_sync_wr),
         .rd_en(FIFO_rx_enable),
-        .dout(FIFO_data_out),
+        .dout(FIFO_rx_dout),
         .full(FIFO_rx_full),
         .empty(FIFO_rx_empty),
         .valid(FIFO_rx_valid),

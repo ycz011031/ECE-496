@@ -39,6 +39,7 @@ module Main(
         .I(sys_clkp),
         .IB(sys_clkn)
     );
+       
     
  
 // USB Driver 
@@ -138,7 +139,7 @@ module Main(
         .MB_ready(MB_ready),
         .data_ready(data_ready),
         .inq_addr(inq_addr),
-        .inq_update(inq_update),
+        .inq_update(inqury_update),
         
         .mode(mode),
         .residual_flat(residual_flat),

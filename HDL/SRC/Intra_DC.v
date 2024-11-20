@@ -1,108 +1,96 @@
 module DC_prediction (
-    input clk,
-    input reset,
-    input [127:0] top_sample_flat,    // Flattened top sample (16 * 8 bits)
-    input top_sample_avail,
-    input [127:0] left_sample_flat,   // Flattened left sample (16 * 8 bits)
-    input left_sample_avail,
-    input [2047:0] mb_pixels_flat,    // Flattened macroblock pixels (16 * 16 * 8 bits)
-    output reg [2047:0] residual_flat, // Flattened residual (16 * 16 * 8 bits)
-    output reg available
+    input wire clk,
+    
+    input wire[127:0] MB_data,
+    input wire[31:0] Top_data,
+    input wire[31:0] Left_data,
+    input wire data_ready,
+    input wire data_stall,
+    
+    output wire[131:0] Residual_out,
+    output reg Residual_ready   
+    
 );
 
-    reg [7:0] top_sample[15:0];
-    reg [7:0] left_sample[15:0];
-    reg [7:0] mb_pixels[15:0][15:0];
-    reg [7:0] prediction[15:0][15:0];
-    reg [7:0] residual[15:0][15:0];
+    // State encoding using localparam
+    localparam IDLE_SAMPLE = 2'b00;
+    localparam COMPUTE_DC  = 2'b01;
+    localparam COMPUTE_RES = 2'b10;
 
-    integer sum;
-    reg [7:0] mean;
-    integer i, j;
+    // State register
     reg [1:0] state;
-    integer k;
 
-    localparam IDLE = 2'd0,
-               CALC_SUM = 2'd1,
-               CALC_MEAN = 2'd2,
-               CALC_RESIDUAL = 2'd3;
+    // Registers for input sampling
+    reg [7:0] top_sample[3:0];
+    reg [7:0] left_sample[3:0];
+    reg [7:0] mb_pixels[15:0];
+    
+    // Registers for intermediate calculations
+    reg [7:0] prediction_value;     // Predicted DC value (8 bits)
+    reg [8:0] residual[15:0];       // Residual values (9 bits)
 
-    // Unflatten inputs
-    always @(*) begin
-        
-        for (k = 0; k < 16; k = k + 1) begin
-            top_sample[k] = top_sample_flat[8*k +: 8];
-            left_sample[k] = left_sample_flat[8*k +: 8];
-        end
-        for (k = 0; k < 256; k = k + 1) begin
-            mb_pixels[k/16][k%16] = mb_pixels_flat[8*k +: 8];
-        end
+    integer i; // Loop index
+
+    // State machine
+    always @(posedge clk) begin
+        case (state)
+            IDLE_SAMPLE: begin
+                Residual_ready <= 1'b0;
+                
+                // Sample inputs if data is ready and no stall condition
+                if (data_ready && !data_stall) begin
+                    // Sample Top and Left reference pixels
+                    for (i = 0; i < 4; i = i + 1) begin
+                        top_sample[i] <= Top_data[i * 8 +: 8];
+                        left_sample[i] <= Left_data[i * 8 +: 8];
+                    end
+
+                    // Sample Macroblock pixels
+                    for (i = 0; i < 16; i = i + 1) begin
+                        mb_pixels[i] <= MB_data[i * 8 +: 8];
+                    end
+
+                    // Transition to next state
+                    state <= COMPUTE_DC;
+                end
+            end
+
+            COMPUTE_DC: begin
+                // Compute the average using top 6 MSBs
+                reg [5:0] avg_top;  // Temporary storage for 6 MSBs of the top average
+                reg [5:0] avg_left; // Temporary storage for 6 MSBs of the left average
+
+                avg_top = (top_sample[0][7:2] + top_sample[1][7:2] + 
+                           top_sample[2][7:2] + top_sample[3][7:2]) >> 2;
+                avg_left = (left_sample[0][7:2] + left_sample[1][7:2] + 
+                            left_sample[2][7:2] + left_sample[3][7:2]) >> 2;
+
+                // Calculate the predicted DC value
+                prediction_value <= {avg_top + avg_left}; // 8-bit predicted value
+                state <= COMPUTE_RES; // Move to next state
+            end
+
+            COMPUTE_RES: begin
+                // Compute residuals
+                for (i = 0; i < 16; i = i + 1) begin
+                    residual[i] <= $signed(mb_pixels[i]) - $signed(prediction_value);
+                end
+
+                // Flatten residuals for output
+                for (i = 0; i < 16; i = i + 1) begin
+                    Residual_out[i * 9 +: 9] <= residual[i];
+                end
+
+                Residual_ready <= 1'b1; // Signal residuals are ready
+                state <= IDLE_SAMPLE; // Return to idle/sample state
+            end
+        endcase
     end
 
-    // State machine for prediction and residual calculation
-    always @(posedge clk or posedge reset) begin
-        if (reset) begin
-            sum <= 0;
-            mean <= 0;
-            i <= 0;
-            j <= 0;
-            state <= IDLE;
-            available <= 0;
-            residual_flat <= 0;
-        end else begin
-            case (state)
-                IDLE: begin
-                    if (top_sample_avail || left_sample_avail) begin
-                        sum <= 0;
-                        i <= 0;
-                        state <= CALC_SUM;
-                        available <= 0;
-                    end
-                end
-
-                CALC_SUM: begin
-                    if (i < 16) begin
-                        if (top_sample_avail) sum <= sum + top_sample[i];
-                        if (left_sample_avail) sum <= sum + left_sample[i];
-                        i <= i + 1;
-                    end else begin
-                        state <= CALC_MEAN;
-                    end
-                end
-
-                CALC_MEAN: begin
-                    if (top_sample_avail && left_sample_avail) begin
-                        mean <= sum / 32;
-                    end else if (top_sample_avail || left_sample_avail) begin
-                        mean <= sum / 16;
-                    end else begin
-                        mean <= 128; // Default value if no neighbors are available
-                    end
-                    i <= 0;
-                    state <= CALC_RESIDUAL;
-                end
-
-                CALC_RESIDUAL: begin
-                    if (i < 16) begin
-                        for (j = 0; j < 16; j = j + 1) begin
-                            prediction[i][j] <= mean;
-                            residual[i][j] <= mb_pixels[i][j] - mean;
-                        end
-                        i <= i + 1;
-                    end else begin
-                        // Flatten the residual output
-                        for (i = 0; i < 16; i = i + 1) begin
-                            for (j = 0; j < 16; j = j + 1) begin
-                                residual_flat[8*(i*16 + j) +: 8] <= residual[i][j];
-                            end
-                        end
-                        state <= IDLE;
-                        available <= 1;
-                    end
-                end
-
-                default: state <= IDLE;
-            endcase
-        end
+    // Initial state
+    initial begin
+        state = IDLE_SAMPLE;
+        Residual_ready = 1'b0;
     end
+
 endmodule
