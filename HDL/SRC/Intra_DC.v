@@ -7,7 +7,7 @@ module DC_prediction (
     input wire data_ready,
     input wire data_stall,
     
-    output wire[131:0] Residual_out,
+    output wire[127:0] Residual_out,
     output reg Residual_ready   
     
 );
@@ -30,15 +30,18 @@ module DC_prediction (
     reg [8:0] residual[15:0];       // Residual values (9 bits)
 
     integer i; // Loop index
-
+    
+    reg [5:0] avg_top;  // Temporary storage for 6 MSBs of the top average
+    reg [5:0] avg_left; // Temporary storage for 6 MSBs of the left average
+    reg data_ready_reg = 1'b0;
     // State machine
     always @(posedge clk) begin
         case (state)
             IDLE_SAMPLE: begin
                 Residual_ready <= 1'b0;
-                
+                data_ready_reg <= data_ready; 
                 // Sample inputs if data is ready and no stall condition
-                if (data_ready && !data_stall) begin
+                if (~data_ready_reg && data_ready && !data_stall) begin
                     // Sample Top and Left reference pixels
                     for (i = 0; i < 4; i = i + 1) begin
                         top_sample[i] <= Top_data[i * 8 +: 8];
@@ -57,8 +60,7 @@ module DC_prediction (
 
             COMPUTE_DC: begin
                 // Compute the average using top 6 MSBs
-                reg [5:0] avg_top;  // Temporary storage for 6 MSBs of the top average
-                reg [5:0] avg_left; // Temporary storage for 6 MSBs of the left average
+                
 
                 avg_top = (top_sample[0][7:2] + top_sample[1][7:2] + 
                            top_sample[2][7:2] + top_sample[3][7:2]) >> 2;
@@ -77,16 +79,35 @@ module DC_prediction (
                 end
 
                 // Flatten residuals for output
-                for (i = 0; i < 16; i = i + 1) begin
-                    Residual_out[i * 9 +: 9] <= residual[i];
-                end
 
                 Residual_ready <= 1'b1; // Signal residuals are ready
                 state <= IDLE_SAMPLE; // Return to idle/sample state
             end
         endcase
     end
-
+    
+    wire[31:0] row_1;
+    wire[31:0] row_2;
+    wire[31:0] row_3;
+    wire[31:0] row_4;
+    assign row_1[7:0]   = residual[0][8:1];
+    assign row_1[15:8]  = residual[1][8:1];
+    assign row_1[23:16] = residual[2][8:1];
+    assign row_1[31:24] = residual[3][8:1];
+    assign row_2[7:0]   = residual[4][8:1];
+    assign row_2[15:8]  = residual[5][8:1];
+    assign row_2[23:16] = residual[6][8:1];
+    assign row_2[31:24] = residual[7][8:1];
+    assign row_3[7:0]   = residual[8][8:1];
+    assign row_3[15:8]  = residual[9][8:1];
+    assign row_3[23:16] = residual[10][8:1];
+    assign row_3[31:24] = residual[11][8:1];
+    assign row_4[7:0]   = residual[12][8:1];
+    assign row_4[15:8]  = residual[13][8:1];
+    assign row_4[23:16] = residual[14][8:1];
+    assign row_4[31:24] = residual[15][8:1];
+    
+    assign Residual_out = {row_4,row_3,row_2,row_1};
     // Initial state
     initial begin
         state = IDLE_SAMPLE;

@@ -27,7 +27,7 @@ module Memory_Interface_tb;
     
     reg DCT_busy;
     wire[1:0] mode;
-    wire[31:0] residual_flat;
+    wire[127:0] residual_flat;
     wire residual_ready;
 
     // DUT instantiation

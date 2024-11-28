@@ -20,11 +20,10 @@ module USB_Driver(
     output wire FIFO_tx_full,
     output wire FIFO_tx_empty,
     input  wire FIFO_tx_enable,
-    input  wire[7:0] FIFO_tx_din,
-    output wire FIFO_tx_ack,
+    input  wire[31:0] FIFO_tx_din,
     output wire FIFO_tx_BT,
-    input  wire FIFO_tx_ready,
-    
+        
+    //rx signals
     output wire FIFO_rx_full,
     output wire FIFO_rx_empty,
     input  wire FIFO_rx_enable,
@@ -79,6 +78,7 @@ module USB_Driver(
     //Currently configured to take 426*240p pictures
     wire[31:0] PC_rx_sync; //
     wire[31:0] PC_tx_sync;
+    wire FIFO_tx_ready;
     wire PC_rx_sync_wr;
     wire PC_tx_sync_rd;
 
@@ -113,7 +113,7 @@ module USB_Driver(
         .dout(PC_tx_sync),
         .full(FIFO_tx_full),
         .empty(FIFO_tx_empty),
-        .wr_ack(FIFO_tx_ack)
+        .prog_full(FIFO_tx_ready)
     );
     
     fifo_generator_1 PC_rx_FIFO(

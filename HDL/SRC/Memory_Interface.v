@@ -22,18 +22,12 @@
 
 module Memory_Interface(
     input wire clk,
+    output wire[1:0] led,
     
     //Interfacing With USB Driver async signals
     input  wire[31:0] PC_rx_async,
     output wire[31:0] PC_tx_async,
-    
-    //Interfacing With USB Driver transmit
-    output reg FIFO_tx_enable,
-    output reg[7:0] FIFO_tx_din,
-    input  wire FIFO_tx_BT,
-    output reg FIFO_tx_ready,
-    
-    
+ 
     //Interfacing With USB Driver recieve
     output reg FIFO_rx_enable,
     input  wire[7:0] FIFO_rx_dout,
@@ -48,9 +42,7 @@ module Memory_Interface(
     output wire data_ready,
     input wire frame_complete,
     input wire[14:0] inq_addr,
-    input wire inqury_update 
-    
-       
+    input wire inqury_update     
     );
    
     reg wea_1;
@@ -110,17 +102,43 @@ module Memory_Interface(
     reg DRAM_write_complete;
     reg DRAM_read_complete;
     
-    reg[1:0] stage;
+    reg[1:0] cur_state_MB;
 
     initial begin
-        cur_state_wr <= IDLE;
-        stage        <= 2'b00;
+        DRAM_read_complete   <= 1'b1;
+        DRAM_write_complete  <= 1'b0;
+        
+        horizontal_addr_wr   <= 8'd0;
+        vertical_addr_wr     <= 8'd0;
+        
+        cur_state_wr         <= IDLE;
+        cur_state_MB                <= 2'b00;
+        
+        wea_1 <= 1'b0;
+        wea_2 <= 1'b0;
+        wea_3 <= 1'b0;
+        wea_4 <= 1'b0;
+        addra <= 14'd0;
+        addrb <= 14'd0;
+        dina <= 8'd0;
+        
+        MB_ready <= 1'b0;
+        MB_flat <= 32'd0;
+        
+        FIFO_rx_ready <=  1'b0;
+        FIFO_rx_enable <= 1'b0;
+        
+        
     end     
     
     //Distributed RAM write sequences
     always @(posedge clk) begin
         case (cur_state_wr)
             IDLE: begin
+                wea_1 <= 1'b0;
+                wea_2 <= 1'b0;
+                wea_3 <= 1'b0;
+                wea_4 <= 1'b0;
                 FIFO_rx_ready <= DRAM_read_complete;
                 if (FIFO_rx_empty == 1'b0) begin
                     cur_state_wr           <= Hold;
@@ -131,7 +149,11 @@ module Memory_Interface(
                     cur_state_wr <= IDLE;
                 end    
             end
-            Hold : begin                
+            Hold : begin
+                wea_1 <= 1'b0;
+                wea_2 <= 1'b0;
+                wea_3 <= 1'b0;
+                wea_4 <= 1'b0;                
                 if (FIFO_rx_Block_rdy == 1'b0) begin
                     cur_state_wr        <= Read;
                     FIFO_rx_enable      <= 1'b1;
@@ -165,34 +187,31 @@ module Memory_Interface(
     assign data_ready = DRAM_write_complete;
     
     always @ (posedge clk) begin
-        case (stage)
+        case (cur_state_MB)
             2'd0 : begin
                 if (inqury_update == 1'b1) begin
                     DRAM_read_complete <= frame_complete; 
-                    stage <= 2'd1;
+                    cur_state_MB <= 2'd1;
                     addrb <= inq_addr;
                     MB_ready <= 1'b0;
                 end
                 else MB_ready <= 1'b1;        
             end
             2'd1 : begin
-                stage <= 2'd2;
+                cur_state_MB <= 2'd2;
             end
             2'd2 : begin
-                stage <= 2'd0;
+                cur_state_MB <= 2'd0;
                 MB_flat <= {doutb_4,doutb_3,doutb_2,doutb_1};
                 MB_ready <= 1'b1;
             end
         endcase    
     end
-       
     
-    always @ (posedge clk) begin
-        if (MB_ready == 1'b1) begin
-            FIFO_tx_enable <= 1'b1;
-            FIFO_tx_din <= MB_flat[7:0];
-        end else FIFO_tx_enable <= 1'b0;
-    end            
+    assign led[0] = &cur_state_wr;
+    assign led[1] = &cur_state_MB;
+       
+         
     
     
     

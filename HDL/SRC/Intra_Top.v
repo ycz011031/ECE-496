@@ -4,14 +4,15 @@ module Intra_Top (
     input  wire[31:0] MB_flat,       // Flattened macroblock pixels (16 * 16 * 8 bits)
     input  wire MB_ready,
     input  wire data_ready,
+    input  wire Process_start,
     output reg[14:0] inq_addr,
     output reg inq_update,
     output reg frame_complete,
     
     output wire[1:0] mode,           // Mode selection: 00 - DC, 01 - Horizontal, 10 - Vertical, 11 - Plane
-    output wire[31:0] residual_flat,  // Flattened residual (16 * 16 * 8 bits)
+    output wire[127:0] residual_flat,  // Flattened residual (16 * 16 * 8 bits)
     output wire residual_ready,
-    input  wire DCT_clear
+    input  wire DCT_busy
 );
 
     reg[31:0] row_1;
@@ -31,20 +32,33 @@ module Intra_Top (
     reg data_ready_reg;
     
     wire prediction_ready;
-    
+    integer i;
     initial begin
         horizontal_index <= 7'd0;
         vertical_index   <= 7'd0;
         cur_state_inq    <= 3'd0;
         cur_sub_block    <= 2'd0;
+        col_cache        <= 64'h0f0f0f0f;        
+        for (i = 0; i < 64; i = i + 1) begin
+            row_cache[i] = 64'h0f0f0f0f;
+        end
+        inq_addr   <= 15'd0;
+        inq_update <= 1'b0;
+        
+        row_1 <= 32'd0;
+        row_2 <= 32'd0;
+        row_3 <= 32'd0;
+        row_4 <= 32'd0;
+        
     end 
     
     always @(posedge clk) begin
         case(cur_state_inq)
           3'b000 : begin
             data_strobe <= 1'b0;
-            data_ready_reg <= data_ready;
-            if (data_ready_reg == 1'b0 && data_ready == 1'b1) begin
+            inq_addr    <= 15'd0;
+            inq_update  <= 1'b0;
+            if (Process_start == 1'b1 && data_ready == 1'b1) begin
                 cur_state_inq     <= 3'b001;
                 horizontal_index  <= 7'd0;
                 vertical_index    <= 7'd0;
@@ -54,11 +68,10 @@ module Intra_Top (
           end
           3'b001 : begin
             data_strobe <= 1'b0;
-            inq_addr <= {horizontal_index,cur_sub_block[0],vertical_index,cur_sub_block[1]}*424;                  
+            inq_addr <= {vertical_index,cur_sub_block[1],horizontal_index,cur_sub_block[0]};                  
             inq_update <= 1'b1;
             if (MB_ready == 1'b0) begin
                 cur_state_inq <= 3'b010;
-                cur_sub_block <= cur_sub_block + 1;
             end    
           end
           3'b010 : begin
@@ -69,30 +82,34 @@ module Intra_Top (
                         row_1[15:0] <= MB_flat[15:0];
                         row_2[15:0] <= MB_flat[31:16];
                         cur_state_inq <= 3'b001;
+                        cur_sub_block <= cur_sub_block + 1;
                     end
                     2'd1 : begin
                         row_1[31:16] <= MB_flat[15:0];
                         row_2[31:16] <= MB_flat[31:16];
                         cur_state_inq <= 3'b001;
+                        cur_sub_block <= cur_sub_block + 1;
                     end          
                     2'd2 : begin
                         row_3[15:0] <= MB_flat[15:0];
                         row_4[15:0] <= MB_flat[31:16];
                         cur_state_inq <= 3'b001;
+                        cur_sub_block <= cur_sub_block + 1;
                     end
                     2'd3 : begin
                         row_3[31:16] <= MB_flat[15:0];
                         row_4[31:16] <= MB_flat[31:16];
                         cur_state_inq <= 3'b100;
+                        cur_sub_block <= cur_sub_block + 1;
                     end
                 endcase              
             end
           end
           3'b100 : begin
-             data_strobe <= 1'b1;
-             row_cache[horizontal_index] <= row_4;
-             col_cache<={row_4[31:24],row_3[31:24],row_2[31:24],row_1[31:24]};
+             data_strobe <= 1'b1;             
              if (prediction_ready == 1'b1) begin
+                row_cache[horizontal_index] <= row_4;
+                col_cache<={row_4[31:24],row_3[31:24],row_2[31:24],row_1[31:24]};
                  if (horizontal_index == 6'd63) begin
                      horizontal_index <= 6'd0;
                      if (vertical_index == 6'd63) begin
@@ -111,55 +128,21 @@ module Intra_Top (
         endcase            
     end            
             
+    DC_prediction DC_mode(
+        .clk(clk),
+        
+        .MB_data({row_4,row_3,row_2,row_1}),
+        .Top_data(row_cache[horizontal_index]),
+        .Left_data(col_cache),
+        .data_ready(data_strobe),
+        .data_stall(DCT_busy),
+        
+        .Residual_out(residual_flat),
+        .Residual_ready(prediction_ready));
+        
+        
     
-    
-    // Instantiate DC mode prediction module
-    DC_prediction dc_prediction (
-        .clk(clk),
-        .reset(reset),
-        .top_sample_flat(top_sample_flat),
-        .top_sample_avail(top_sample_avail),
-        .left_sample_flat(left_sample_flat),
-        .left_sample_avail(left_sample_avail),
-        .mb_pixels_flat(mb_pixels_flat),
-        .residual_flat(dc_residual),
-        .available(dc_available)
-    );
 
-    // Instantiate Horizontal mode prediction module
-    Horizontal_prediction horizontal_prediction (
-        .clk(clk),
-        .reset(reset),
-        .left_sample_flat(left_sample_flat),
-        .left_sample_avail(left_sample_avail),
-        .mb_pixels_flat(mb_pixels_flat),
-        .residual_flat(horizontal_residual),
-        .available(horizontal_available)
-    );
-
-    // Instantiate Vertical mode prediction module
-    Vertical_prediction vertical_prediction (
-        .clk(clk),
-        .reset(reset),
-        .top_sample_flat(top_sample_flat),
-        .top_sample_avail(top_sample_avail),
-        .mb_pixels_flat(mb_pixels_flat),
-        .residual_flat(vertical_residual),
-        .available(vertical_available)
-    );
-
-    // Instantiate Plane mode prediction module
-    Plane_prediction plane_prediction (
-        .clk(clk),
-        .reset(reset),
-        .top_sample_flat(top_sample_flat),
-        .top_sample_avail(top_sample_avail),
-        .left_sample_flat(left_sample_flat),
-        .left_sample_avail(left_sample_avail),
-        .mb_pixels_flat(mb_pixels_flat),
-        .residual_flat(plane_residual),
-        .available(plane_available)
-    );
 
     // Output the residual data based on the selected mode
     

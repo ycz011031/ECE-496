@@ -43,17 +43,15 @@ module Main(
     
  
 // USB Driver 
-
         wire[31:0] PC_rx_async;
         wire[31:0] PC_tx_async;
         
         wire FIFO_tx_full;
         wire FIFO_tx_empty;
         wire FIFO_tx_enable;
-        wire[7:0] FIFO_tx_din;
-        wire FIFO_tx_ack;
+        wire[31:0] FIFO_tx_din;
         wire FIFO_tx_BT;
-        wire FIFO_tx_ready;
+
         
         wire FIFO_rx_full;
         wire FIFO_rx_empty;
@@ -80,9 +78,7 @@ module Main(
         .FIFO_tx_empty(FIFO_tx_empty),
         .FIFO_tx_enable(FIFO_tx_enable),
         .FIFO_tx_din(FIFO_tx_din),
-        .FIFO_tx_ack(FIFO_tx_ack),
         .FIFO_tx_BT(FIFO_tx_BT),
-        .FIFO_tx_ready(FIFO_tx_ready),
         
         .FIFO_rx_full(FIFO_rx_full),
         .FIFO_rx_empty(FIFO_rx_empty),
@@ -99,6 +95,7 @@ module Main(
     wire[31:0] MB_flat;
     wire MB_ready;
     wire data_ready;
+    wire frame_complete;
     wire[14:0] inq_addr;
     wire inqury_update;
     Memory_Interface Memory_Interface(
@@ -106,11 +103,6 @@ module Main(
         
         .PC_rx_async(PC_rx_async),
         .PC_tx_async(PC_tx_async),
-    
-        .FIFO_tx_enable(FIFO_tx_enable),
-        .FIFO_tx_din(FIFO_tx_din),
-        .FIFO_tx_BT(FIFO_tx_BT),
-        .FIFO_tx_ready(FIFO_tx_ready),
         
         .FIFO_rx_empty(FIFO_rx_empty),
         .FIFO_rx_enable(FIFO_rx_enable),
@@ -122,6 +114,7 @@ module Main(
         .MB_flat(MB_flat),
         .MB_ready(MB_ready),
         .data_ready(data_ready),
+        .frame_complete(frame_complete),
         .inq_addr(inq_addr),
         .inqury_update(inqury_updata)
     );
@@ -130,7 +123,7 @@ module Main(
     wire[1:0] mode;
     wire[31:0] residual_flat;
     wire residual_ready;
-    wire DCT_clear;
+    wire DCT_busy;
     
     Intra_Top Intra_prediction_unit(
         .clk(clk),
@@ -138,17 +131,28 @@ module Main(
         .MB_flat(MB_flat),
         .MB_ready(MB_ready),
         .data_ready(data_ready),
+        .Process_start(PC_rx_async[0]),
         .inq_addr(inq_addr),
         .inq_update(inqury_update),
+        .frame_complete(frame_complete),
         
         .mode(mode),
         .residual_flat(residual_flat),
-        .residual_ready(residual_flat),
-        .DCT_clear(DCT_clear)
+        .residual_ready(residual_ready),
+        .DCT_busy(DCT_busy)
     );    
      
     
-    
+    Output_Parsar Intra_parsar(
+        .clk(clk),
+        
+        .data_flat(residual_flat),
+        .data_ready(residual_ready),
+        .data_idle(frame_complete),
+        .Parsar_busy(DCT_busy),
+        
+        .FIFO_tx_din(FIFO_tx_din),
+        .FIFO_tx_enable(FIFO_tx_enable));
     
     
     
