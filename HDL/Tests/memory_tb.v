@@ -12,15 +12,23 @@ module Memory_Interface_tb;
     reg [7:0] FIFO_rx_dout;
     reg FIFO_rx_empty;
     reg FIFO_rx_Block_rdy;
-    reg frame_complete;
-    reg [14:0] inq_addr;
-    reg inqury_update;
+    
+    
+    wire frame_complete;
+    wire [14:0] inq_addr;
+    wire inqury_update;
+    
     
     wire FIFO_rx_enable;
     wire FIFO_rx_ready;
     wire [31:0] MB_flat;
     wire MB_ready;
     wire data_ready;
+    
+    reg DCT_busy;
+    wire[1:0] mode;
+    wire[31:0] residual_flat;
+    wire residual_ready;
 
     // DUT instantiation
     Memory_Interface uut (
@@ -39,6 +47,21 @@ module Memory_Interface_tb;
         .inq_addr(inq_addr),
         .inqury_update(inqury_update)
     );
+    
+    Intra_Top intra_top_inst (
+        .clk(clk),
+        .MB_flat(MB_flat),
+        .MB_ready(MB_ready),
+        .data_ready(data_ready),
+        .Process_start(PC_rx_async[0]),
+        .inq_addr(inq_addr),
+        .inq_update(inqury_update),
+        .frame_complete(frame_complete),
+        .mode(mode),
+        .residual_flat(residual_flat),
+        .residual_ready(residual_ready),
+        .DCT_busy(DCT_busy)
+    );
 
     // Clock generation
     initial begin
@@ -54,9 +77,8 @@ module Memory_Interface_tb;
         FIFO_rx_dout = 0;
         FIFO_rx_empty = 1;
         FIFO_rx_Block_rdy = 1;
-        frame_complete = 0;
-        inq_addr = 0;
-        inqury_update = 0;
+        DCT_busy = 0;
+
 
         // Reset
         #100;
@@ -73,7 +95,7 @@ module Memory_Interface_tb;
 
             // Send 256 bytes for the current row
             for (integer horizontal = 0; horizontal < 256; horizontal = horizontal + 1) begin
-                FIFO_rx_dout = horizontal + vertical; // Example data
+                FIFO_rx_dout = horizontal; // Example data
                 #CLK_PERIOD;
             end
 
@@ -82,9 +104,12 @@ module Memory_Interface_tb;
             FIFO_rx_Block_rdy = 1; // Deassert block ready
             wait (!FIFO_rx_ready); // Wait for the module to finish the current block
         end
-
+    
         // Completion
         #100;
+        
+        PC_rx_async <= 31'd1;
+        #100000;
         $stop;
     end
 
