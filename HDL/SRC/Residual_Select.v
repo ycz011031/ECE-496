@@ -33,9 +33,10 @@ module Residual_Select(
     
     input wire [1:0] mode_select,     // Mode select: 00, 01, 10 for manual, 11 for automatic
     
-    output reg [127:0] selected_block, // Selected prediction block
-    output reg block_ready,           // Indicates the output is valid
-    output reg busy
+    output reg [127:0] residual_flat, // Selected prediction block
+    output reg [1:0] residual_mode,
+    output reg residual_ready,           // Indicates the output is valid
+    output reg select_busy
 
     );
     // State encoding
@@ -62,8 +63,8 @@ module Residual_Select(
     // Initial state
     initial begin
         state = IDLE;
-        block_ready = 0;
-        busy = 0;
+        residual_ready = 0;
+        select_busy = 0;
         sum_0 = 0;
         sum_1 = 0;
         sum_2 = 0;
@@ -73,34 +74,51 @@ module Residual_Select(
     always @(posedge clk) begin
         case (state)
             IDLE: begin
-                block_ready <= 0;
-                busy <= 0;
-
-                // Stall the state machine if stall is asserted
-                if (stall) begin
-                    state <= IDLE;
-                end else if (pred_block_0_ready && pred_block_1_ready && pred_block_2_ready) begin
-                    busy <= 1;
-
-                    // Sample blocks
-                    block_0 <= pred_block_0;
-                    block_1 <= pred_block_1;
-                    block_2 <= pred_block_2;
-
-                    // Unflatten prediction blocks into arrays for sum calculation
-                    for (i = 0; i < 16; i = i + 1) begin
-                        pred_0_pixels[i] <= pred_block_0[i * 8 +: 8];
-                        pred_1_pixels[i] <= pred_block_1[i * 8 +: 8];
-                        pred_2_pixels[i] <= pred_block_2[i * 8 +: 8];
+                case (mode_select)
+                    2'b00 : begin
+                        residual_flat  <= pred_block_0;
+                        residual_ready <= pred_block_0_ready;
+                        select_busy    <= stall;
+                        residual_mode  <= 2'b00;
                     end
-
-                    if (mode_select == 2'b11) begin
-                        state <= COMPUTE_SUMS; // Automatic mode
-                    end else begin
-                        state <= SELECT_MIN; // Skip to manual selection
+                    2'b01 : begin
+                        residual_flat  <= pred_block_1;
+                        residual_ready <= pred_block_1_ready;
+                        select_busy    <= stall;
+                        residual_mode  <= 2'b01;
                     end
-                end
-            end
+                    2'b10 : begin
+                        residual_flat  <= pred_block_2;
+                        residual_ready <= pred_block_2_ready;
+                        select_busy    <= stall;
+                        residual_mode  <= 2'b10;
+                    end
+                    2'b11 : begin
+                        if (stall) begin
+                            state <= IDLE;
+                        end else if (pred_block_0_ready && pred_block_1_ready && pred_block_2_ready) begin
+                            select_busy <= 1;    
+                            // Sample blocks
+                            block_0 <= pred_block_0;
+                            block_1 <= pred_block_1;
+                            block_2 <= pred_block_2;
+    
+                            // Unflatten prediction blocks into arrays for sum calculation
+                            for (i = 0; i < 16; i = i + 1) begin
+                                pred_0_pixels[i] <= pred_block_0[i * 8 +: 8];
+                                pred_1_pixels[i] <= pred_block_1[i * 8 +: 8];
+                                pred_2_pixels[i] <= pred_block_2[i * 8 +: 8];
+                            end
+    
+                            if (mode_select == 2'b11) begin
+                                state <= COMPUTE_SUMS; // Automatic mode
+                            end else begin
+                                state <= SELECT_MIN; // Skip to manual selection
+                            end
+                        end
+                    end        
+                endcase
+            end          
 
             COMPUTE_SUMS: begin
                 // Calculate sums for each block
@@ -119,23 +137,23 @@ module Residual_Select(
 
             SELECT_MIN: begin
                 case (mode_select)
-                    2'b00: selected_block <= block_0; // Manual selection: Block 0
-                    2'b01: selected_block <= block_1; // Manual selection: Block 1
-                    2'b10: selected_block <= block_2; // Manual selection: Block 2
+                    2'b00: residual_flat <= block_0; // Manual selection: Block 0
+                    2'b01: residual_flat <= block_1; // Manual selection: Block 1
+                    2'b10: residual_flat <= block_2; // Manual selection: Block 2
                     2'b11: begin
                         // Automatic selection: Find the block with the minimum sum
                         if (sum_0 <= sum_1 && sum_0 <= sum_2) begin
-                            selected_block <= block_0;
+                            residual_flat <= block_0;
                         end else if (sum_1 <= sum_0 && sum_1 <= sum_2) begin
-                            selected_block <= block_1;
+                            residual_flat <= block_1;
                         end else begin
-                            selected_block <= block_2;
+                            residual_flat <= block_2;
                         end
                     end
                 endcase
 
-                block_ready <= 1'b1; // Indicate the output is valid
-                busy <= 0;           // Processing complete
+                residual_ready <= 1'b1; // Indicate the output is valid
+                select_busy <= 0;           // Processing complete
                 state <= IDLE;       // Return to IDLE state
             end
 

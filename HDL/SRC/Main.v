@@ -139,7 +139,8 @@ module Main(
         .mode(mode),
         .residual_flat(residual_flat),
         .residual_ready(residual_ready),
-        .DCT_busy(DCT_busy)
+        .DCT_busy(DCT_busy),
+        .mode_select(PC_rx_async[2:1])
     );    
      
     

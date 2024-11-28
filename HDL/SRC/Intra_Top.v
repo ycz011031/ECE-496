@@ -12,7 +12,8 @@ module Intra_Top (
     output wire[1:0] mode,           // Mode selection: 00 - DC, 01 - Horizontal, 10 - Vertical, 11 - Plane
     output wire[127:0] residual_flat,  // Flattened residual (16 * 16 * 8 bits)
     output wire residual_ready,
-    input  wire DCT_busy
+    input  wire DCT_busy,
+    input  wire[1:0] mode_select
 );
 
     reg[31:0] row_1;
@@ -127,7 +128,18 @@ module Intra_Top (
           end                    
         endcase            
     end            
-            
+    
+    wire[127:0] pred_data_DC;
+    wire[127:0] pred_data_H;
+    wire[127:0] pred_data_V;
+    wire pred_ready_DC;
+    wire pred_ready_H;
+    wire pred_ready_V;
+    
+    wire select_busy;        
+    
+    assign prediction_ready = pred_ready_DC;
+    
     DC_prediction DC_mode(
         .clk(clk),
         
@@ -135,13 +147,49 @@ module Intra_Top (
         .Top_data(row_cache[horizontal_index]),
         .Left_data(col_cache),
         .data_ready(data_strobe),
-        .data_stall(DCT_busy),
+        .data_stall(select_busy),
         
-        .Residual_out(residual_flat),
-        .Residual_ready(prediction_ready));
+        .Residual_out(pred_data_DC),
+        .Residual_ready(pred_ready_DC));
         
+    Vertical_prediction V_mode(
+        .clk(clk),
         
-    
+        .MB_data({row_4,row_3,row_2,row_1}),
+        .Top_data(row_cache[horizontal_index]),
+        .data_ready(data_strobe),
+        .data_stall(select_busy),
+        
+        .Residual_out(pred_data_V),
+        .Residual_ready(pred_ready_V));
+            
+    Horizontal_prediction H_mode(
+        .clk(clk),
+        
+        .MB_data({row_4,row_3,row_2,row_1}),
+        .Left_data(col_cache),
+        .data_ready(data_strobe),
+        .data_stall(select_busy),
+        
+        .Residual_out(pred_data_H),
+        .Residual_ready(pred_ready_H));
+            
+    Residual_Select Residual_select(
+        .clk(clk),
+        .stall(DCT_busy),
+        
+        .pred_block_0(pred_data_DC),
+        .pred_block_0_ready(pred_ready_DC),
+        .pred_block_1(pred_data_V),
+        .pred_block_1_ready(pred_ready_V),
+        .pred_block_2(pred_data_H),
+        .pred_block_2_ready(pred_ready_H),
+        
+        .mode_select(mode_select),
+        .residual_flat(residual_flat),
+        .residual_mode(mode),
+        .residual_ready(residual_ready),
+        .select_busy(select_busy));
 
 
     // Output the residual data based on the selected mode
