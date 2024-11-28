@@ -70,7 +70,7 @@ class codec:
 
     def reconstruction(self, data_matrix):
         # Initialize an empty 256x256 image
-        reconstructed_image = np.zeros((256, 256), dtype=np.int32)
+        reconstructed_image = np.zeros((256, 256), dtype=np.uint8)
 
         # Iterate over 4x4 subblocks (4096 total blocks in a 256x256 image)
         for block_idx in range(4096):
@@ -83,7 +83,7 @@ class codec:
             start_col = col_block * 4
 
             # Get the residual block (4x4)
-            residual_block = data_matrix[block_idx]
+            residual_block = data_matrix[block_idx]<< 1
 
             # Predict the block using mode2_4x4 (DC mode)
             if col_block == 0 and row_block == 0:  # Top-left block
@@ -109,6 +109,8 @@ class codec:
         reconstructed_image = np.clip(reconstructed_image, 0, 255).astype(np.uint8)
 
         return reconstructed_image
+    
+    
 
 
 
