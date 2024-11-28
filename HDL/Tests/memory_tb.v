@@ -109,7 +109,9 @@ module Memory_Interface_tb;
         #100;
         
         PC_rx_async <= 31'd1;
-        #100000;
+        #100
+        PC_rx_async <= 31'd0;
+        #10000000;
         $stop;
     end
 
