@@ -154,7 +154,18 @@ module Main(
         
         .FIFO_tx_din(FIFO_tx_din),
         .FIFO_tx_enable(FIFO_tx_enable));
+        
+    wire quantize_ready;
+    wire[127:0] quantize_data;
     
+    coretransform coretransform(
+        .clk(clk),
+        
+        .data_ready(residual_ready),
+        .data_matrix(residual_flat),
+        
+        .quantize_ready(quantize_ready),
+        .quantize_data(quantize_data));
     
     
     

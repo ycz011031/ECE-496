@@ -48,15 +48,20 @@ module Residual_Select(
     reg [1:0] state;
 
     // Registers for intermediate calculations
-    reg [7:0] pred_0_pixels[15:0];
-    reg [7:0] pred_1_pixels[15:0];
-    reg [7:0] pred_2_pixels[15:0];
+    wire [7:0] pred_0_pixels[15:0];
+    wire [7:0] pred_1_pixels[15:0];
+    wire [7:0] pred_2_pixels[15:0];
     reg [10:0] sum_0; // Sum of block 0
     reg [10:0] sum_1; // Sum of block 1
     reg [10:0] sum_2; // Sum of block 2
     reg [127:0] block_0;
     reg [127:0] block_1;
     reg [127:0] block_2;
+    
+    
+    reg [7:0] sum_0_1[3:1];
+    reg [7:0] sum_1_1[3:1];
+    reg [7:0] sum_2_1[3:1];
 
     integer i;
 
@@ -69,7 +74,18 @@ module Residual_Select(
         sum_1 = 0;
         sum_2 = 0;
     end
-
+    
+    genvar j;
+    
+    // Unflatten prediction blocks into arrays for sum calculation
+    generate
+        for ( j =0; j<4; j = j+1) begin
+            assign pred_0_pixels[j] = pred_block_0[j * 8 +: 8];
+            assign pred_1_pixels[j] = pred_block_1[j * 8 +: 8];
+            assign pred_2_pixels[j] = pred_block_2[j * 8 +: 8];    
+        end
+    endgenerate
+    
     // State machine
     always @(posedge clk) begin
         case (state)
@@ -102,14 +118,12 @@ module Residual_Select(
                             block_0 <= pred_block_0;
                             block_1 <= pred_block_1;
                             block_2 <= pred_block_2;
-    
-                            // Unflatten prediction blocks into arrays for sum calculation
-                            for (i = 0; i < 16; i = i + 1) begin
-                                pred_0_pixels[i] <= pred_block_0[i * 8 +: 8];
-                                pred_1_pixels[i] <= pred_block_1[i * 8 +: 8];
-                                pred_2_pixels[i] <= pred_block_2[i * 8 +: 8];
+                            
+                            for (i=0 ; i<4 ; i = i+1) begin
+                                sum_0_1[i] <= pred_0_pixels[4*i] + pred_0_pixels[4*i+1] + pred_0_pixels[4*i+2] +pred_0_pixels[4*i+3];
+                                sum_1_1[i] <= pred_1_pixels[4*i] + pred_1_pixels[4*i+1] + pred_1_pixels[4*i+2] +pred_1_pixels[4*i+3];
+                                sum_2_1[i] <= pred_2_pixels[4*i] + pred_2_pixels[4*i+1] + pred_2_pixels[4*i+2] +pred_2_pixels[4*i+3];
                             end
-    
                             if (mode_select == 2'b11) begin
                                 state <= COMPUTE_SUMS; // Automatic mode
                             end else begin
@@ -122,15 +136,9 @@ module Residual_Select(
 
             COMPUTE_SUMS: begin
                 // Calculate sums for each block
-                sum_0 = 0;
-                sum_1 = 0;
-                sum_2 = 0;
-
-                for (i = 0; i < 16; i = i + 1) begin
-                    sum_0 = sum_0 + pred_0_pixels[i];
-                    sum_1 = sum_1 + pred_1_pixels[i];
-                    sum_2 = sum_2 + pred_2_pixels[i];
-                end
+                sum_0 <= sum_0_1[0] + sum_0_1[1] + sum_0_1[2] + sum_0_1[3];
+                sum_1 <= sum_1_1[0] + sum_1_1[1] + sum_1_1[2] + sum_1_1[3];
+                sum_2 <= sum_2_1[0] + sum_2_1[1] + sum_2_1[2] + sum_2_1[3];               
 
                 state <= SELECT_MIN; // Move to selection
             end
