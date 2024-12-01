@@ -13,7 +13,9 @@ module Intra_Top (
     output wire[127:0] residual_flat,  // Flattened residual (16 * 16 * 8 bits)
     output wire residual_ready,
     input  wire DCT_busy,
-    input  wire[1:0] mode_select
+    input  wire[1:0] mode_select,
+    
+    output wire[2:0] debug_status_intra
 );
 
     reg[31:0] row_1;
@@ -190,7 +192,8 @@ module Intra_Top (
         .residual_mode(mode),
         .residual_ready(residual_ready),
         .select_busy(select_busy));
-
+    
+    assign debug_status_intra = cur_state_inq;
 
     // Output the residual data based on the selected mode
     

@@ -33,16 +33,18 @@ else:
 codec_instance = codec(dev)
 
     # Step 1: Send the image
-image_name = "input_image.png"  # Replace with the path to your grayscale image
+image_name = "kitten.png"  # Replace with the path to your grayscale image
 original_image = codec_instance.send_image(image_name)
 if original_image is None:
     print("Image transmission failed.")
+    
+input("press enter to continue")    
 
 # Step 2: Start the encoding and decoding process on the FPGA
-encoded_data = codec_instance.start_process()
+encoded_data = codec_instance.start_process_c()
 if len(encoded_data) == 0:
     print("No data received from the FPGA.")
-
+print(encoded_data)
 # Step 3: Parse the encoded data into 4x4 blocks
 data_matrix = codec_instance.data_parsar_1(encoded_data)
 

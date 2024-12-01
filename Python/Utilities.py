@@ -43,13 +43,18 @@ class codec:
     def start_process(self):
         self.dev.SetWireInValue(0x00, 1)
         self.dev.UpdateWireIns()
+        print(time.time())
         while (True):
             self.dev.UpdateWireOuts()
             status = self.dev.GetWireOutValue(0x20)
+            print(time.time())
             if status != 0 :
                 break
         self.dev.SetWireInValue(0x00,0)
         self.dev.UpdateWireIns()
+        self.dev.UpdateWireOuts()
+        print(self.dev.GetWireOutValue(0x20))
+        print(time.time())
         data = bytearray()
         while (True):
             buf = bytearray(1024)
@@ -57,15 +62,32 @@ class codec:
             data += buf
             self.dev.UpdateWireOuts()
             status = self.dev.GetWireOutValue(0x20)
+            print(status)
+            print(time.time())
             if status == 0 :
                 break
+        return data
+    
+    def start_process_c(self):
+        self.dev.SetWireInValue(0x00, 1)
+        self.dev.UpdateWireIns()
+        print(time.time())
+        self.dev.SetWireInValue(0x00,0)
+        self.dev.UpdateWireIns()
+        self.dev.UpdateWireOuts()
+        print(self.dev.GetWireOutValue(0x20))
+        data = bytearray(1024)
+        self.dev.ReadFromBlockPipeOut(0xa0, 1024, data)
+        print(time.time())
         return data
 
     def data_parsar_1 (self,data):
         data_array = np.frombuffer(data,dtype=np.uint8,count=len(data))
+        data_array = np.append(data_array, np.zeros(64512, dtype=np.uint8))
+        print(data_array.shape)
         data_matrix = []
         for i in range(4096):
-            data_matrix.append(np.array(data_array[i*16:i*16+16]).reshape(4,4))
+            data_matrix.append(np.array(data_array[i*16:i*16+16]).reshape(4,4))            
         return data_matrix
 
     def reconstruction(self, data_matrix):

@@ -27,7 +27,9 @@ module coretransform(
     input wire[127:0] data_matrix,
     
     output wire quantize_ready,
-    output wire[127:0] quantize_data
+    output wire[127:0] quantize_data,
+    
+    output wire[1:0] debug_status_transform
 
     );
     
@@ -58,7 +60,7 @@ module coretransform(
     );
     
     
-    
+    assign debug_status_transform = {~dct_valid,~quantize_ready};
     
     
 endmodule

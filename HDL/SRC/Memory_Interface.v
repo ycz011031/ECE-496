@@ -26,7 +26,6 @@ module Memory_Interface(
     
     //Interfacing With USB Driver async signals
     input  wire[31:0] PC_rx_async,
-    output wire[31:0] PC_tx_async,
  
     //Interfacing With USB Driver recieve
     output reg FIFO_rx_enable,
@@ -42,7 +41,9 @@ module Memory_Interface(
     output wire data_ready,
     input wire frame_complete,
     input wire[14:0] inq_addr,
-    input wire inqury_update     
+    input wire inqury_update,
+    
+    output wire[4:0]debug_status_memory     
     );
    
     reg wea_1;
@@ -112,7 +113,7 @@ module Memory_Interface(
         vertical_addr_wr     <= 8'd0;
         
         cur_state_wr         <= IDLE;
-        cur_state_MB                <= 2'b00;
+        cur_state_MB         <= 2'b00;
         
         wea_1 <= 1'b0;
         wea_2 <= 1'b0;
@@ -129,7 +130,10 @@ module Memory_Interface(
         FIFO_rx_enable <= 1'b0;
         
         
-    end     
+    end
+    
+    assign debug_status_memory[2:0] = cur_state_wr;
+    assign debug_status_memory[4:3] = cur_state_MB;     
     
     //Distributed RAM write sequences
     always @(posedge clk) begin

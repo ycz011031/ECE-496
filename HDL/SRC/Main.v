@@ -102,7 +102,6 @@ module Main(
         .clk(clk),
         
         .PC_rx_async(PC_rx_async),
-        .PC_tx_async(PC_tx_async),
         
         .FIFO_rx_empty(FIFO_rx_empty),
         .FIFO_rx_enable(FIFO_rx_enable),
@@ -116,12 +115,14 @@ module Main(
         .data_ready(data_ready),
         .frame_complete(frame_complete),
         .inq_addr(inq_addr),
-        .inqury_update(inqury_updata)
+        .inqury_update(inqury_update),
+        
+        .debug_status_memory(PC_tx_async[7:3])
     );
      
      
     wire[1:0] mode;
-    wire[31:0] residual_flat;
+    wire[127:0] residual_flat;
     wire residual_ready;
     wire DCT_busy;
     
@@ -140,7 +141,9 @@ module Main(
         .residual_flat(residual_flat),
         .residual_ready(residual_ready),
         .DCT_busy(DCT_busy),
-        .mode_select(PC_rx_async[2:1])
+        .mode_select(PC_rx_async[2:1]),
+        
+        .debug_status_intra(PC_tx_async[2:0])
     );    
      
     
@@ -165,7 +168,17 @@ module Main(
         .data_matrix(residual_flat),
         
         .quantize_ready(quantize_ready),
-        .quantize_data(quantize_data));
+        .quantize_data(quantize_data)
+        
+        
+        );
+        
+        
+    ila_0 ila(
+        .clk(clk),
+        .probe0(PC_tx_async[7:0]),
+        .probe1({inqury_update,MB_ready,residual_ready})
+        );    
     
     
     
