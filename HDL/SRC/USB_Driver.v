@@ -22,6 +22,7 @@ module USB_Driver(
     input  wire FIFO_tx_enable,
     input  wire[31:0] FIFO_tx_din,
     output wire FIFO_tx_BT,
+    output wire FIFO_tx_block_full,
         
     //rx signals
     output wire FIFO_rx_full,
@@ -129,6 +130,7 @@ module USB_Driver(
         .prog_empty(FIFO_rx_Block_rdy)
     );   
     
+    assign FIFO_tx_block_full = FIFO_tx_ready;
      
     
 endmodule

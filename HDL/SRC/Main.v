@@ -51,6 +51,7 @@ module Main(
         wire FIFO_tx_enable;
         wire[31:0] FIFO_tx_din;
         wire FIFO_tx_BT;
+        wire FIFO_tx_block_full;
 
         
         wire FIFO_rx_full;
@@ -79,6 +80,7 @@ module Main(
         .FIFO_tx_enable(FIFO_tx_enable),
         .FIFO_tx_din(FIFO_tx_din),
         .FIFO_tx_BT(FIFO_tx_BT),
+        .FIFO_tx_block_full(FIFO_tx_block_full),
         
         .FIFO_rx_full(FIFO_rx_full),
         .FIFO_rx_empty(FIFO_rx_empty),
@@ -156,7 +158,9 @@ module Main(
         .Parsar_busy(DCT_busy),
         
         .FIFO_tx_din(FIFO_tx_din),
-        .FIFO_tx_enable(FIFO_tx_enable));
+        .FIFO_tx_enable(FIFO_tx_enable),
+        .FIFO_tx_block_full(FIFO_tx_block_full)
+        );
         
     wire quantize_ready;
     wire[127:0] quantize_data;
@@ -177,7 +181,9 @@ module Main(
     ila_0 ila(
         .clk(clk),
         .probe0(PC_tx_async[7:0]),
-        .probe1({inqury_update,MB_ready,residual_ready})
+        .probe1({inqury_update,MB_ready,residual_ready}),
+        .probe2({frame_complete,FIFO_tx_enable,FIFO_tx_block_full,FIFO_tx_full,FIFO_tx_empty}),
+        .probe3(FIFO_tx_din)
         );    
     
     

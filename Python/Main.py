@@ -46,6 +46,9 @@ if len(encoded_data) == 0:
     print("No data received from the FPGA.")
 print(encoded_data)
 # Step 3: Parse the encoded data into 4x4 blocks
+raw_data = np.frombuffer(encoded_data,dtype=np.uint8,count=len(encoded_data))
+raw_data = np.append(raw_data, np.zeros(256*256-4096, dtype=np.uint8))
+raw_data = raw_data.reshape(256,256)
 data_matrix = codec_instance.data_parsar_1(encoded_data)
 
 # Step 4: Reconstruct the image from the decoded data
@@ -63,7 +66,7 @@ plt.axis('off')
 # Display decoded image
 plt.subplot(1, 2, 2)
 plt.title("Decoded Image")
-plt.imshow(decoded_image, cmap='gray')
+plt.imshow(raw_data, cmap='gray')
 plt.axis('off')
 
 # Show the plots

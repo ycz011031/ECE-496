@@ -76,14 +76,14 @@ class codec:
         self.dev.UpdateWireIns()
         self.dev.UpdateWireOuts()
         print(self.dev.GetWireOutValue(0x20))
-        data = bytearray(1024)
+        data = bytearray(4096)
         self.dev.ReadFromBlockPipeOut(0xa0, 1024, data)
         print(time.time())
         return data
 
     def data_parsar_1 (self,data):
         data_array = np.frombuffer(data,dtype=np.uint8,count=len(data))
-        data_array = np.append(data_array, np.zeros(64512, dtype=np.uint8))
+        data_array = np.append(data_array, np.zeros(256*256-1024, dtype=np.uint8))
         print(data_array.shape)
         data_matrix = []
         for i in range(4096):

@@ -175,7 +175,9 @@ module Intra_Top (
         
         .Residual_out(pred_data_H),
         .Residual_ready(pred_ready_H));
-            
+    
+    
+    wire [127:0] placeholder;        
     Residual_Select Residual_select(
         .clk(clk),
         .stall(DCT_busy),
@@ -188,12 +190,13 @@ module Intra_Top (
         .pred_block_2_ready(pred_ready_H),
         
         .mode_select(mode_select),
-        .residual_flat(residual_flat),
+        .residual_flat(placeholder),
         .residual_mode(mode),
         .residual_ready(residual_ready),
         .select_busy(select_busy));
     
     assign debug_status_intra = cur_state_inq;
+    assign residual_flat = {row_4,row_3,row_2,row_1};
 
     // Output the residual data based on the selected mode
     

@@ -29,7 +29,8 @@ module Output_Parsar(
     output reg Parsar_busy,       // Asserted when parsing is ongoing
     
     output reg[31:0] FIFO_tx_din, // 32-bit data to send to FIFO
-    output reg FIFO_tx_enable     // Write enable for FIFO
+    output reg FIFO_tx_enable,     // Write enable for FIFO
+    input wire FIFO_tx_block_full
 );
 
       // State encoding
@@ -49,7 +50,7 @@ module Output_Parsar(
         case (state)
             // IDLE State: Wait for data_ready signal
             IDLE: begin
-                Parsar_busy <= 1'b0;
+                Parsar_busy <= 1'b0|FIFO_tx_block_full;
                 FIFO_tx_enable <= 1'b0;
                 transmitted_bytes <= 10'd0;
                 data_index <= 2'd0;
