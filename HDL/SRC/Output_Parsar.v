@@ -34,9 +34,11 @@ module Output_Parsar(
 );
 
       // State encoding
-    localparam IDLE         = 2'b00;
+    localparam IDLE          = 2'b00;
     localparam PARSE         = 2'b01;
-    localparam ZERO_PADDING = 2'b10;
+    localparam ZERO_PADDING  = 2'b10;
+    
+    localparam block_full_stall = 1'b0;
 
     // State register
     reg [1:0] state;
@@ -50,7 +52,7 @@ module Output_Parsar(
         case (state)
             // IDLE State: Wait for data_ready signal
             IDLE: begin
-                Parsar_busy <= 1'b0|FIFO_tx_block_full;
+                Parsar_busy <= 1'b0|(FIFO_tx_block_full&block_full_stall);
                 FIFO_tx_enable <= 1'b0;
                 transmitted_bytes <= 10'd0;
                 data_index <= 2'd0;

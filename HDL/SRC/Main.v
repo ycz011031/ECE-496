@@ -127,6 +127,8 @@ module Main(
     wire[127:0] residual_flat;
     wire residual_ready;
     wire DCT_busy;
+    wire[5:0] debug_cur_horizontal;
+    wire[5:0] debug_cur_vertical;
     
     Intra_Top Intra_prediction_unit(
         .clk(clk),
@@ -145,16 +147,32 @@ module Main(
         .DCT_busy(DCT_busy),
         .mode_select(PC_rx_async[2:1]),
         
-        .debug_status_intra(PC_tx_async[2:0])
+        .debug_status_intra(PC_tx_async[2:0]),
+        .debug_cur_vertical(debug_cur_vertical),
+        .debug_cur_horizontal(debug_cur_horizontal)
     );    
      
     
-    Output_Parsar Intra_parsar(
+    wire MB_ready_out;
+    wire quantize_ready;
+    wire[127:0] quantize_data;
+    
+    assign MB_ready_out = MB_ready & inqury_update & data_ready;
+    
+    Output_Top Output_parsar(
         .clk(clk),
+        .mode_select(PC_rx_async[4:3]),
         
-        .data_flat(residual_flat),
-        .data_ready(residual_ready),
-        .data_idle(frame_complete),
+        .residual_flat(residual_flat),
+        .residual_ready(residual_ready),
+        
+        .quantized_flat(quantize_data),
+        .quantized_ready(quantize_ready),
+        
+        .MB_flat(MB_flat),
+        .MB_ready(MB_ready_out),               
+        
+        .frame_complete(frame_complete),
         .Parsar_busy(DCT_busy),
         
         .FIFO_tx_din(FIFO_tx_din),
@@ -162,8 +180,7 @@ module Main(
         .FIFO_tx_block_full(FIFO_tx_block_full)
         );
         
-    wire quantize_ready;
-    wire[127:0] quantize_data;
+
     
     coretransform coretransform(
         .clk(clk),
@@ -183,7 +200,10 @@ module Main(
         .probe0(PC_tx_async[7:0]),
         .probe1({inqury_update,MB_ready,residual_ready}),
         .probe2({frame_complete,FIFO_tx_enable,FIFO_tx_block_full,FIFO_tx_full,FIFO_tx_empty}),
-        .probe3(FIFO_tx_din)
+        .probe3(FIFO_tx_din),
+        .probe4(inq_addr),
+        .probe5(PC_rx_async[4:0]),
+        .probe6({debug_cur_horizontal,debug_cur_vertical})
         );    
     
     

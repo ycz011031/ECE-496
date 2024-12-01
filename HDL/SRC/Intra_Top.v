@@ -15,7 +15,10 @@ module Intra_Top (
     input  wire DCT_busy,
     input  wire[1:0] mode_select,
     
-    output wire[2:0] debug_status_intra
+    output wire[2:0] debug_status_intra,
+    output wire[5:0] debug_cur_horizontal,
+    output wire[5:0] debug_cur_vertical
+    
 );
 
     reg[31:0] row_1;
