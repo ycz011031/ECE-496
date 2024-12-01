@@ -144,7 +144,7 @@ module Main(
         .mode(mode),
         .residual_flat(residual_flat),
         .residual_ready(residual_ready),
-        .DCT_busy(DCT_busy),
+        .DCT_busy(FIFO_tx_block_full),
         .mode_select(PC_rx_async[2:1]),
         
         .debug_status_intra(PC_tx_async[2:0]),

@@ -41,7 +41,7 @@ module DC_prediction (
                 Residual_ready <= 1'b0;
                 data_ready_reg <= data_ready; 
                 // Sample inputs if data is ready and no stall condition
-                if (~data_ready_reg && data_ready && !data_stall) begin
+                if (~data_ready_reg & data_ready) begin
                     // Sample Top and Left reference pixels
                     for (i = 0; i < 4; i = i + 1) begin
                         top_sample[i] <= Top_data[i * 8 +: 8];
@@ -69,7 +69,9 @@ module DC_prediction (
 
                 // Calculate the predicted DC value
                 prediction_value <= {avg_top + avg_left}; // 8-bit predicted value
-                state <= COMPUTE_RES; // Move to next state
+                if (~data_stall) begin  
+                    state <= COMPUTE_RES; // Move to next state
+                end    
             end
 
             COMPUTE_RES: begin

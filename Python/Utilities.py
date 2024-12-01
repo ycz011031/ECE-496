@@ -38,6 +38,8 @@ class codec:
         tx_code = self.dev.WriteToBlockPipeIn(0x80,256,buf)
         if tx_code < 0 :
             print("Transmission Filaed with error code",tx_code)
+        else :
+            print("Image Transmitted")
         return image
     
     def start_process(self):
@@ -68,22 +70,20 @@ class codec:
                 break
         return data
     
-    def start_process_c(self):
-        self.dev.SetWireInValue(0x00, 1)
+    def start_process_1(self):
+        self.dev.SetWireInValue(0x00, 5)
         self.dev.UpdateWireIns()
+        #self.dev.SetWireInValue(0x00, 0)
+        #self.dev.UpdateWireIns()
         print(time.time())
-        self.dev.SetWireInValue(0x00,0)
-        self.dev.UpdateWireIns()
-        self.dev.UpdateWireOuts()
-        print(self.dev.GetWireOutValue(0x20))
-        data = bytearray(4096)
+        data = bytearray(65536)
         self.dev.ReadFromBlockPipeOut(0xa0, 1024, data)
         print(time.time())
         return data
 
     def data_parsar_1 (self,data):
         data_array = np.frombuffer(data,dtype=np.uint8,count=len(data))
-        data_array = np.append(data_array, np.zeros(256*256-1024, dtype=np.uint8))
+        #data_array = np.append(data_array, np.zeros(256*256-1024, dtype=np.uint8))
         print(data_array.shape)
         data_matrix = []
         for i in range(4096):
@@ -130,6 +130,18 @@ class codec:
         # Clip the reconstructed image values to the valid range [0, 255]
         reconstructed_image = np.clip(reconstructed_image, 0, 255).astype(np.uint8)
 
+        return reconstructed_image
+    
+    def reconstruction_1(self,data_matrix):
+        reconstructed_image = np.zeros((256, 256), dtype=np.uint8)
+        for block_idx in range(4096):
+            row_block = block_idx // 64
+            col_block = block_idx % 64
+            start_row = row_block*4
+            start_col = col_block*4
+            block = data_matrix[block_idx]
+            reconstructed_image[start_row:start_row+4,start_col:start_col+4] = block
+        reconstructed_image = np.clip(reconstructed_image,0,255).astype(np.uint8)
         return reconstructed_image
     
     

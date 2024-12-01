@@ -41,13 +41,13 @@ if original_image is None:
 input("press enter to continue")    
 
 # Step 2: Start the encoding and decoding process on the FPGA
-encoded_data = codec_instance.start_process_c()
+encoded_data = codec_instance.start_process_1()
 if len(encoded_data) == 0:
     print("No data received from the FPGA.")
 print(encoded_data)
 # Step 3: Parse the encoded data into 4x4 blocks
 raw_data = np.frombuffer(encoded_data,dtype=np.uint8,count=len(encoded_data))
-raw_data = np.append(raw_data, np.zeros(256*256-4096, dtype=np.uint8))
+#raw_data = np.append(raw_data, np.zeros(256*256-4096, dtype=np.uint8))
 raw_data = raw_data.reshape(256,256)
 data_matrix = codec_instance.data_parsar_1(encoded_data)
 
@@ -66,10 +66,14 @@ plt.axis('off')
 # Display decoded image
 plt.subplot(1, 2, 2)
 plt.title("Decoded Image")
-plt.imshow(raw_data, cmap='gray')
+plt.imshow(decoded_image, cmap='gray')
 plt.axis('off')
+
+
 
 # Show the plots
 plt.tight_layout()
 plt.show()
+reconstructed_image_name = "row_image.png"
 
+cv2.imwrite(reconstructed_image_name, decoded_image)
