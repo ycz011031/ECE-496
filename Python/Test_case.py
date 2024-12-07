@@ -179,7 +179,7 @@ def send_image(image_name):
 
 def main():
     # Step 1: Load and preprocess the image
-    image_name = "kitten.png"
+    image_name = "peppers.png"
     print("Loading and preprocessing the image...")
     image = send_image(image_name)
     if image is None:
