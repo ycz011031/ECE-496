@@ -200,8 +200,6 @@ module Intra_Top (
     
     assign debug_status_intra = cur_state_inq;
     assign residual_flat = {row_4,row_3,row_2,row_1};
-    assign debug_cur_horizontal = horizontal_index;
-    assign debug_cur_vertical = vertical_index;
 
     // Output the residual data based on the selected mode
     

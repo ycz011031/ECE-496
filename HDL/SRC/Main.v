@@ -144,7 +144,7 @@ module Main(
         .mode(mode),
         .residual_flat(residual_flat),
         .residual_ready(residual_ready),
-        .DCT_busy(FIFO_tx_block_full),
+        .DCT_busy(DCT_busy),
         .mode_select(PC_rx_async[2:1]),
         
         .debug_status_intra(PC_tx_async[2:0]),
@@ -156,6 +156,9 @@ module Main(
     wire MB_ready_out;
     wire quantize_ready;
     wire[127:0] quantize_data;
+    wire[7:0] entropy_data;
+    wire entropy_ready;
+    
     
     assign MB_ready_out = MB_ready & inqury_update & data_ready;
     
@@ -193,6 +196,16 @@ module Main(
         
         
         );
+        
+    cavlc entropy_encoding(
+        .clk(clk),
+        .enable(1'b1),
+        
+        .valid(quantize_ready),
+        .block_in(quantize_data),
+        
+        .data_out(entropy_data),
+        .out_valid(entropy_ready));    
         
         
     ila_0 ila(

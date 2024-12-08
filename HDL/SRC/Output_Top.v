@@ -33,6 +33,9 @@ module Output_Top(
     input wire [31:0] MB_flat,
     input wire MB_ready,
     
+    input wire [7:0] entropy_data,
+    input wire entropy_ready,
+    
     input wire frame_complete,
     output wire Parsar_busy,
     
@@ -43,10 +46,13 @@ module Output_Top(
     
     wire [31:0] FIFO_tx_din_res;
     wire [31:0] FIFO_tx_din_qnt;
+    wire [31:0] FIFO_tx_din_etp;
     wire FIFO_tx_enable_res;
     wire FIFO_tx_enable_qnt;
+    wire FIFO_tx_enable_etp;
     wire busy_res;
     wire busy_qnt;
+    wire busy_etp;
     
     
     Output_Parsar Residual_parsar(
@@ -73,17 +79,32 @@ module Output_Top(
         .FIFO_tx_enable(FIFO_tx_enable_qnt),
         .FIFO_tx_block_full(FIFO_tx_block_full));
         
+    entropy_parser Entropy_Parsar(
+        .clk(clk),
+        
+        .data_cavlc(entropy_data),
+        .data_valid_cavlc(entropy_ready),
+        .dump_all(frame_complete),
+        
+        .FIFO_tx_din(FIFO_tx_din_etp),
+        .FIFO_tx_enable(FIFO_tx_enable_etp),
+        .busy(busy_etp));
+        
+        
     assign FIFO_tx_din = (mode_select == 2'b00) ? MB_flat :
                          (mode_select == 2'b01) ? FIFO_tx_din_res :
-                         (mode_select == 2'b10) ? FIFO_tx_din_qnt : 32'b0;
+                         (mode_select == 2'b10) ? FIFO_tx_din_qnt : 
+                         (mode_select == 2'b11) ? FIFO_tx_din_etp :32'b0;
 
     assign FIFO_tx_enable = (mode_select == 2'b00) ? MB_ready :
                             (mode_select == 2'b01) ? FIFO_tx_enable_res :
-                            (mode_select == 2'b10) ? FIFO_tx_enable_qnt : 1'b0;
+                            (mode_select == 2'b10) ? FIFO_tx_enable_qnt :
+                            (mode_select == 2'b11) ? FIFO_tx_enable_etp : 1'b0;
 
     assign Parsar_busy = (mode_select == 2'b00) ? 1'b0 :
                          (mode_select == 2'b01) ? busy_res :
-                         (mode_select == 2'b10) ? busy_qnt : 1'b0;               
+                         (mode_select == 2'b10) ? busy_qnt :
+                         (mode_select == 2'b11) ? busy_etp : 1'b0;               
         
     
     
