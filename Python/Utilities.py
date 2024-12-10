@@ -70,7 +70,7 @@ class codec:
                 break
         return data
     
-    def start_process_1(self):
+    def start_process_test(self):
         self.dev.SetWireInValue(0x00, 5)
         self.dev.UpdateWireIns()
         #self.dev.SetWireInValue(0x00, 0)
@@ -81,7 +81,14 @@ class codec:
         print(time.time())
         return data
 
-    def data_parsar_1 (self,data):
+    def data_parsar_raw(self,data):
+        data_array = np.frombuffer(data,dtype=np.uint8,count=len(data))
+        data_matrix=[]
+        for i in range(16384):
+            data_matrix.append(np.array(data_array[i*4:i*4+4]).reshape(2,2))            
+        return data_matrix
+
+    def data_parsar_MB (self,data):
         data_array = np.frombuffer(data,dtype=np.uint8,count=len(data))
         #data_array = np.append(data_array, np.zeros(256*256-1024, dtype=np.uint8))
         print(data_array.shape)
@@ -89,6 +96,30 @@ class codec:
         for i in range(4096):
             data_matrix.append(np.array(data_array[i*16:i*16+16]).reshape(4,4))            
         return data_matrix
+    
+    def data_parser_EC(self, data):
+        data_array = np.frombuffer(data, dtype=np.uint8, count=len(data))
+        output_array = []  # Array to store arrays of data
+        data_pointer = 0   # Pointer to track position in the data array
+        while data_pointer < len(data_array) - 1:
+            # Read the 16-bit indicator (2 bytes)
+            if data_pointer + 1 >= len(data_array):
+                break
+            indicator_bits = (data_array[data_pointer] << 8) | data_array[data_pointer + 1]
+            data_pointer += 2
+            temp_array = []  # Temporary array to store results of this segment
+            # Iterate through the 16 bits of the indicator
+            for i in range(16):
+                if data_pointer >= len(data_array):
+                    break
+                if indicator_bits & (1 << (15 - i)):  # Check if the bit is 1
+                    temp_array.append(data_array[data_pointer])  # Add next data value
+                    data_pointer += 1
+                else:
+                    temp_array.append(0)  # Append a zero (uint8)
+            # Append the temp_array to the output array
+            output_array.append(temp_array)
+        return output_array
 
     def reconstruction(self, data_matrix):
         # Initialize an empty 256x256 image
@@ -122,7 +153,7 @@ class codec:
                 V = reconstructed_image[start_row:start_row + 4, start_col - 1]
 
             # Compute the predicted block using mode2_4x4
-            reconstructed_block = mode2_4x4(residual_block, H, V)
+            reconstructed_block = modeDC_4x4(residual_block, H, V)
 
             # Place the reconstructed block into the reconstructed image
             reconstructed_image[start_row:start_row + 4, start_col:start_col + 4] = reconstructed_block
@@ -132,7 +163,7 @@ class codec:
 
         return reconstructed_image
     
-    def reconstruction_1(self,data_matrix):
+    def reconstruction_test(self,data_matrix):
         reconstructed_image = np.zeros((256, 256), dtype=np.uint8)
         for block_idx in range(4096):
             row_block = block_idx // 64
@@ -144,11 +175,50 @@ class codec:
         reconstructed_image = np.clip(reconstructed_image,0,255).astype(np.uint8)
         return reconstructed_image
     
+    def Inverse_CoreTransform(self, input_data):
+
+    # Initialize the quantization matrix for H.264 (4x4 example)
+        quant_matrix = np.array([
+            [16, 11, 10, 16],
+            [12, 12, 14, 19],
+            [14, 13, 16, 24],
+            [14, 17, 22, 29]
+        ], dtype=np.int32)
+
+        # Example IDCT approximation matrix for 4x4 (simplified H.264 style)
+        idct_matrix = np.array([
+            [1, 1, 1, 1],
+            [2, 1, -1, -2],
+            [1, -1, -1, 1],
+            [1, -2, 2, -1]
+        ], dtype=np.int32)
+
+        # Process each block (4x4 blocks packed as input_data)
+        processed_data = []
+
+        for block_idx in range(len(input_data)):
+            # Extract the 4x4 coefficient block
+            coeff_block = np.array(input_data[block_idx]).reshape((4, 4))
+
+            # Perform inverse quantization directly
+            inv_quantized_block = coeff_block * quant_matrix
+
+            # Perform the integer approximation of the IDCT directly
+            idct_block = np.clip(
+                np.round(idct_matrix @ inv_quantized_block @ idct_matrix.T) >> 4,
+                -2048, 2047
+            ).astype(np.int32)
+
+            # Append the processed block
+            processed_data.append(idct_block)
+
+        return processed_data
+    
     
 
 
 
-def mode2_4x4(residual, H, V,):
+def modeDC_4x4(residual, H, V,):
     """
     4x4 block's Mode 2 (DC) prediction mode
     Args:
@@ -182,3 +252,58 @@ def mode2_4x4(residual, H, V,):
     return reconstructed
    
 
+def modeVertical_4x4(residual, V):
+    """
+    4x4 block's Mode 0 (Vertical) prediction mode
+    Args:
+        residual: the residual block (4x4 matrix)
+        V: the vertical predictor values (a 1D array of 4 values)
+    Returns:
+        the reconstructed 4x4 block after vertical prediction
+    """
+    size = residual.shape
+
+    # Check if vertical (V) predictors are available
+    V_Available = False if np.sum(V < 0) > 0 else True
+
+    # Generate the predicted block
+    predicted = np.zeros(size, int)
+    if V_Available:
+        # Copy vertical predictor values down each column
+        predicted[:] = V.reshape(1, -1)
+    else:
+        # If no vertical predictor is available, use the default value of 128
+        predicted[:] = 128
+
+    # Reconstruct the block by adding residuals to the prediction
+    reconstructed = residual + predicted
+
+    return reconstructed
+
+def modeHorizontal_4x4(residual, H):
+    """
+    4x4 block's Mode 1 (Horizontal) prediction mode
+    Args:
+        residual: the residual block (4x4 matrix)
+        H: the horizontal predictor values (a 1D array of 4 values)
+    Returns:
+        the reconstructed 4x4 block after horizontal prediction
+    """
+    size = residual.shape
+
+    # Check if horizontal (H) predictors are available
+    H_Available = False if np.sum(H < 0) > 0 else True
+
+    # Generate the predicted block
+    predicted = np.zeros(size, int)
+    if H_Available:
+        # Copy horizontal predictor values across each row
+        predicted[:] = H.reshape(-1, 1)
+    else:
+        # If no horizontal predictor is available, use the default value of 128
+        predicted[:] = 128
+
+    # Reconstruct the block by adding residuals to the prediction
+    reconstructed = residual + predicted
+
+    return reconstructed

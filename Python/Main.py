@@ -41,7 +41,7 @@ if original_image is None:
 input("press enter to continue")    
 
 # Step 2: Start the encoding and decoding process on the FPGA
-encoded_data = codec_instance.start_process_1()
+encoded_data = codec_instance.start_process()
 if len(encoded_data) == 0:
     print("No data received from the FPGA.")
 print(encoded_data)
@@ -49,7 +49,7 @@ print(encoded_data)
 raw_data = np.frombuffer(encoded_data,dtype=np.uint8,count=len(encoded_data))
 #raw_data = np.append(raw_data, np.zeros(256*256-4096, dtype=np.uint8))
 raw_data = raw_data.reshape(256,256)
-data_matrix = codec_instance.data_parsar_1(encoded_data)
+data_matrix = codec_instance.data_parsar_MB(encoded_data)
 
 # Step 4: Reconstruct the image from the decoded data
 decoded_image = codec_instance.reconstruction(data_matrix)
